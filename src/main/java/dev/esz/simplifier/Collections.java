@@ -10,9 +10,13 @@ import java.util.ArrayList;
  * with any data type and print their values, with the possibility to
  * add a prefix and a suffix, as well as print the information on a single line
  * or in different lines.
- * 
+ *
+ * </p>
+ *
+ * <p>
  * Ex:
- * 
+ * </p>
+ *
  * <blockquote>
  * 
  * <pre>
