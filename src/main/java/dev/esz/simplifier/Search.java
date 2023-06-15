@@ -44,18 +44,20 @@ import java.util.ArrayList;
  */
 
 public class Search {
-        private String term;
-        private String target;
+        private final String term;
+        private final String target;
 
         /**
          * <p>
          * A constructor for the Search class, defining the
-         * term and target variables to be used on globaly on
+         * term and target variables to be used on globally on
          * the class.
          * </p>
          * 
-         * @param term
-         * @param target
+         * @param term A String to be searched for throughout the
+         *             target
+         * @param target A String that will be analysed in the search
+         *               for a correspondent term
          * 
          * @since 1.0.0
          */
@@ -100,9 +102,7 @@ public class Search {
 
                 Matcher matcher = pattern.matcher(target);
 
-                boolean hasMatch = matcher.find();
-
-                return hasMatch;
+                return matcher.find();
         }
 
         /**
@@ -130,7 +130,8 @@ public class Search {
          * 
          * </blockquote>
          * 
-         * @param caseSensitive
+         * @param caseSensitive A boolean that determines if the search should
+         *                      be case-sensitive
          * @return A boolean value depending on the result of the search.
          * 
          * @since 1.0.0
@@ -139,15 +140,13 @@ public class Search {
 
                 Pattern pattern = Pattern.compile(term);
 
-                if (caseSensitive != true) {
+                if (caseSensitive) {
                         pattern = Pattern.compile(term, Pattern.CASE_INSENSITIVE);
                 }
 
                 Matcher matcher = pattern.matcher(target);
 
-                boolean hasMatch = matcher.find();
-
-                return hasMatch;
+                return matcher.find();
         }
 
          /**
@@ -173,7 +172,7 @@ public class Search {
          * </blockquote>
          * </p>
          * 
-         * @return A integer with the amount of times said term has been found in the target.
+         * @return An integer with the amount of times said term has been found in the target.
          * @since 1.0.0
          */
         public int indexOf() {
@@ -187,9 +186,7 @@ public class Search {
                         index.add(matcher.group());
                 }
 
-                int result = index.size();
-
-                return result;
+                return index.size();
         }
 
         /**
@@ -207,7 +204,7 @@ public class Search {
          * 
          * Search mySearch = new Search(term, target);
          * 
-         * int index = mySearch.indexOf(caseSensite:"true");
+         * int index = mySearch.indexOf(caseSensitive:"true");
          * // would return 1, since the first "I" is capitalized
          * 
          * </pre>
@@ -215,8 +212,9 @@ public class Search {
          * </blockquote>
          * </p>
          * 
-         * @param caseSensitive
-         * @return A integer with the amount of times said term has been found in the target.
+         * @param caseSensitive A boolean that determines if the search
+         *                      should be case-sensitive
+         * @return An integer with the amount of times said term has been found in the target.
          * @since 1.0.0
          */
         public int indexOf(boolean caseSensitive) {
@@ -224,7 +222,7 @@ public class Search {
 
                 Pattern pattern = Pattern.compile(term);
 
-                if (caseSensitive != true) {
+                if (caseSensitive) {
                         pattern = Pattern.compile(term, Pattern.CASE_INSENSITIVE);
                 }
 
@@ -234,8 +232,6 @@ public class Search {
                         index.add(matcher.group());
                 }
 
-                int result = index.size();
-
-                return result;
+                return index.size();
         }
 }

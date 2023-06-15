@@ -79,7 +79,7 @@ public class Folder {
          * defines a String pathname globally.
          * <p>
          * 
-         * @param pathname
+         * @param pathname A String that acts as a pathname for the folder location
          * 
          * @since 1.0.0
          * 
@@ -96,10 +96,10 @@ public class Folder {
          * {@link Folder}.
          * </p>
          * 
-         * @param pathname
+         * @param pathname A String that acts as a pathname for the folder location
          * @return A String containing the pathname with the slash (/) and space ( )
          *         characters
-         *         remaped to a quadruple backslash (\) to set the pathname of the
+         *         remapped to a quadruple backslash (\) to set the pathname of the
          *         folder.
          * 
          * @since 1.0.0
@@ -170,9 +170,7 @@ public class Folder {
                         }
                 }
 
-                Object[] folders = folder.toArray();
-
-                return folders;
+                return folder.toArray();
 
         }
 
@@ -187,29 +185,32 @@ public class Folder {
          *                                folder, or if the new name is already taken by
          *                                another folder.
          * 
-         * @param newPathname
+         * @param newPathname A String that acts as the new pathname for the folder
+         *                    location
          * 
          * @since 1.0.0
          */
-        public void rename(String newPathname) {
+        public boolean rename(String newPathname) {
                 newPathname = setPathname(newPathname);
 
                 File name = new File(pathname);
-
                 File newName = new File(newPathname);
+
+                boolean isFolderRenamed;
 
                 if (!name.isFile()) {
                         if (newName.exists()) {
                                 throw new InputMismatchException("The folder " + newName + "already exists");
                         } else {
-                                name.renameTo(newName);
+                                isFolderRenamed = name.renameTo(newName);
                                 Folder e = new Folder(newPathname);
-                                e.equals(e);
 
                         }
                 } else {
                         throw new InputMismatchException("Class rename received a file instead of a folder");
                 }
+
+                return isFolderRenamed;
         }
 
         /**

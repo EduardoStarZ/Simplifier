@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * </p>
  * 
  * <p>
- * By inputing a long data type, the system will count the remaining time until
+ * By inputting a long data type, the system will count the remaining time until
  * the execution of the next
  * lines of code.
  * </p>
@@ -114,7 +114,7 @@ public class Timer {
      * A private class to set the values for the local variables.
      * </p>
      * 
-     * @param milliseconds
+     * @param milliseconds A long that defines the amount of time in milliseconds
      * 
      * @since 1.0.0
      */
@@ -128,7 +128,8 @@ public class Timer {
      * A private class to set the values for the local variables.
      * </p>
      * 
-     * @param milliseconds
+     * @param milliseconds A long that defines the amount of time in milliseconds
+     * @param seconds A long that defines the amount of time in seconds
      * 
      * @since 1.0.0
      */
@@ -145,7 +146,9 @@ public class Timer {
      * A private class to set the values for the local variables.
      * </p>
      * 
-     * @param milliseconds
+     * @param milliseconds A long that defines the amount of time in milliseconds
+     * @param seconds A long that defines the amount of time in seconds
+     * @param minutes A long that defines the amount of time in minutes
      * 
      * @since 1.0.0
      */
@@ -165,7 +168,10 @@ public class Timer {
      * A private class to set the values for the local variables.
      * </p>
      * 
-     * @param milliseconds
+     * @param milliseconds A long that defines the amount of time in milliseconds
+     * @param seconds A long that defines the amount of time in seconds
+     * @param minutes A long that defines the amount of time in minutes
+     * @param hours A long that defines the amount of time in hours
      * 
      * @since 1.0.0
      */
@@ -194,12 +200,14 @@ public class Timer {
      * @throws InterruptedException if the current thread is interrupted while
      *                              waiting, in any means.
      */
-    public void sleep() throws InterruptedException {
+    public boolean sleep() throws InterruptedException {
         CountDownLatch timer = new CountDownLatch(1);
 
-        timer.await(totalTime, TimeUnit.MILLISECONDS);
+        boolean finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
 
         timer.countDown();
+
+        return finished;
     }
 
     /**
@@ -220,12 +228,14 @@ public class Timer {
      * @throws InterruptedException if the current thread is interrupted while
      *                              waiting, in any means.
      */
-    public void sleep(int count) throws InterruptedException {
+    public boolean sleep(int count) throws InterruptedException {
 
         CountDownLatch timer = new CountDownLatch(count);
 
-        timer.await(totalTime, TimeUnit.MILLISECONDS);
+        boolean finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
 
         timer.countDown();
+
+        return finished;
     }
 }

@@ -53,8 +53,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of strings with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of strings with the contents it previously had sorted, without
          * adding or removing elements
          * 
          * @since 1.0.0
@@ -70,8 +70,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of strings with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of strings with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -79,7 +79,7 @@ public class Sorter {
         public static String[] sort(String[] sort, boolean descendingOrder) {
                 Arrays.sort(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 }
 
@@ -92,8 +92,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of integers with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of integers with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -111,8 +111,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of integers with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of integers with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -121,7 +121,7 @@ public class Sorter {
 
                 Integer[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -138,8 +138,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of integers with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of integers with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -157,15 +157,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of integers with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of integers with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Integer[] sort(Integer[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);
@@ -180,8 +180,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of longs with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of longs with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -199,8 +199,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of longs with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of longs with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -209,7 +209,7 @@ public class Sorter {
 
                 Long[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -226,8 +226,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of longs with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of longs with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -245,15 +245,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of longs with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of longs with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Long[] sort(Long[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);
@@ -268,8 +268,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of characters with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of characters with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -286,8 +286,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of characters with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of characters with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -295,7 +295,7 @@ public class Sorter {
         public static char[] sort(char[] sort, boolean descendingOrder) {
                 Character[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -312,8 +312,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of characters with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of characters with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -331,15 +331,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of characters with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of characters with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Character[] sort(Character[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);
@@ -354,8 +354,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of bytes with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of bytes with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -372,8 +372,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of bytes with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of bytes with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -381,7 +381,7 @@ public class Sorter {
         public static byte[] sort(byte[] sort, boolean descendingOrder) {
                 Byte[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -398,8 +398,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of bytes with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of bytes with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -417,15 +417,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of bytes with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of bytes with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Byte[] sort(Byte[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);
@@ -440,8 +440,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of shorts with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of shorts with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -458,8 +458,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of shorts with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of shorts with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -467,7 +467,7 @@ public class Sorter {
         public static short[] sort(short[] sort, boolean descendingOrder) {
                 Short[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -484,8 +484,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of shorts with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of shorts with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -503,15 +503,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of shorts with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of shorts with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Short[] sort(Short[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);
@@ -527,8 +527,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of floats with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of floats with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -545,8 +545,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of floats with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of floats with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -554,7 +554,7 @@ public class Sorter {
         public static float[] sort(float[] sort, boolean descendingOrder) {
                 Float[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -571,8 +571,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of floats with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of floats with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -590,15 +590,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of floats with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of floats with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Float[] sort(Float[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);
@@ -613,8 +613,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of doubles with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of doubles with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -631,8 +631,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of doubles with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of doubles with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -640,7 +640,7 @@ public class Sorter {
         public static double[] sort(double[] sort, boolean descendingOrder) {
                 Double[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -657,8 +657,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of doubles with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of doubles with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -676,15 +676,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of doubles with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of doubles with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Double[] sort(Double[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);
@@ -699,8 +699,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of booleans with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of booleans with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -720,9 +720,9 @@ public class Sorter {
          * A method to sort Arrays of booleans (Primitive type) into a order, either ascending or
          * descending order (ascending if not declared).
          * </p>
-         * 
-         * @param sort
-         * @return A Array of booleans with the contents it previously had sorted, without
+         *
+         * @param sort The array to be sorted
+         * @return An Array of booleans with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -730,7 +730,7 @@ public class Sorter {
         public static boolean[] sort(boolean[] sort, boolean descendingOrder) {
                 Boolean[] objSort = ArrayUtils.toObject(sort);
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(objSort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(objSort);
@@ -747,8 +747,8 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of booleans with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of booleans with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
@@ -766,15 +766,15 @@ public class Sorter {
          * descending order (ascending if not declared).
          * </p>
          * 
-         * @param sort
-         * @return A Array of booleans with the contents it previously had sorted, without
+         * @param sort The array to be sorted
+         * @return An Array of booleans with the contents it previously had sorted, without
          * adding or removing elements.
          * 
          * @since 1.0.0
          */
         public static Boolean[] sort(Boolean[] sort, boolean descendingOrder) {
 
-                if (descendingOrder == true) {
+                if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
                 } else {
                         Arrays.sort(sort);

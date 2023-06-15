@@ -84,7 +84,7 @@ public class Files {
          * String on the {@link Files} object start
          * </p>
          * 
-         * @param pathname
+         * @param pathname A String that acts as a pathname for the file location
          * 
          * @since 1.0.0
          */
@@ -98,8 +98,8 @@ public class Files {
          * called, setting the pathname String to a valid pathname.
          * </p>
          * 
-         * @param pathname
-         * @return String
+         * @param pathname A String that acts as a pathname for the file location
+         * @return The pathname to the constructor
          * 
          * @since 1.0.0
          */
@@ -122,9 +122,11 @@ public class Files {
          * 
          * @since 1.0.0
          */
-        public void create() {
+        public boolean create() {
 
                 File file = new File(pathname);
+
+                boolean fileCreated;
 
                 String[] name = pathname.split("\\\\");
                 int length = name.length - 1;
@@ -133,11 +135,13 @@ public class Files {
                         throw new InputMismatchException("The file " + name[length] + " already exists");
                 } else {
                         try {
-                                file.createNewFile();
+                                fileCreated = file.createNewFile();
                         } catch (Exception e) {
                                 throw new InputMismatchException("File could not be created, or the program lacks the permission to write to the selected folder");
                         }
                 }
+
+                return fileCreated;
         }
 
         /**
@@ -175,7 +179,8 @@ public class Files {
          * 
          * @throws FileNotFoundException if the file can't be found.
          * 
-         * @param input
+         * @param input A String that acts as the content to be written into
+         *              the file, overriding whatever may be in there
          * 
          * @since 1.0.0
          */
@@ -210,7 +215,8 @@ public class Files {
          * 
          * @throws FileNotFoundException if the file can't be found.
          * 
-         * @param input
+         * @param input A String that acts as the content to be concatenated
+         *              to the file, after whatever is in the file
          * 
          * @since 1.0.0
          */
@@ -246,7 +252,7 @@ public class Files {
          * 
          * @throws FileNotFoundException if the file can't be found.
          * 
-         * @return a Array of booleans with the information about what the selected file can do, in order:
+         * @return An Array of booleans with the information about what the selected file can do, in order:
          * read, write and execute.
          * 
          * @since 1.0.0
@@ -256,7 +262,7 @@ public class Files {
 
                 String[] name = pathname.split("\\\\");
                 int length = name.length - 1;
-                boolean[] data = {};
+                boolean[] data = new boolean[3];
 
                 File file = new File(pathname);
 
@@ -308,12 +314,14 @@ public class Files {
          * @throws InputMismatchException if the file already exists or if the method receives a folder
          *               instead of a file.
          * 
-         * @param newPathname
+         * @param newPathname A String that will provide
+         *                    the new pathname for the file location
          * 
          * @since 1.0.0
          */
-        public void rename(String newPathname) {
+        public boolean rename(String newPathname) {
                 File name = new File(pathname);
+                boolean isFileRenamed;
 
                 File newName = new File(newPathname);
 
@@ -321,13 +329,14 @@ public class Files {
                         if (newName.exists()) {
                                 throw new InputMismatchException("The file " + newName + "already exists");
                         } else {
-                                name.renameTo(newName);
+                                isFileRenamed = name.renameTo(newName);
                                 Files e = new Files(newPathname);
-                                e.equals(e);
                         }
                 } else {
                         throw new InputMismatchException("Method rename() received a folder instead of a file");
                 }
+
+                return isFileRenamed;
         }
 
         /**

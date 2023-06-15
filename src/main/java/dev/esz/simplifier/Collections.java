@@ -23,10 +23,10 @@ import java.util.ArrayList;
  * 
  * Collections myIterator = new Collections();
  * ArrayList<String> list = new ArrayList<String>();
- * // supose this array contains "my", "name", "is", "x"
+ * // suppose this array contains "my ", "name ", "is ", "x"
  * 
  * myIterator.out(list);
- * // this will output "mynameisx"
+ * // this will output "my name is x"
  * 
  * </pre>
  * 
@@ -39,22 +39,21 @@ import java.util.ArrayList;
  * @author EduardoStarZ
  * @since 1.0.0
  */
-public class Collections {
+public class Collections<T> {
 
-    public Collections() {
-    }
+    public Collections() {}
 
     /**
      * <p>
      * A method that prints a whole Collection
      * through an {@link Iterator}.
      * 
-     * @param collection
+     * @param collection A generic type collection
      * 
      * @since 1.0.0
      */
-    public void out(Collection collection) {
-        Iterator it = collection.iterator();
+    public void out(Collection<T> collection) {
+        Iterator<T> it = collection.iterator();
 
         while (it.hasNext()) {
             System.out.print(it.next());
@@ -67,18 +66,19 @@ public class Collections {
      * through an {@link Iterator}, allowing to print each
      * element of the collection on different lines.
      * 
-     * @param collection
-     * @param printLine
+     * @param collection A generic type collection
+     * @param printLine A boolean to indicate whether the method should or not
+     *                  print a new line for each Collection item
      * 
      * @since 1.0.0
      */
-    public void out(Collection collection, boolean printLine) {
-        Iterator it = collection.iterator();
+    public void out(Collection<T> collection, boolean printLine) {
+        Iterator<T> it = collection.iterator();
 
         while (it.hasNext()) {
             System.out.print(it.next());
 
-            if (printLine == true) {
+            if (printLine) {
                 System.out.print("\n");
             }
         }
@@ -90,14 +90,16 @@ public class Collections {
      * through an {@link Iterator}, allowing to set a prefix and a
      * suffix of type string to the print statement.
      * 
-     * @param collection
-     * @param prefix
-     * @param suffix
+     * @param collection A generic type collection
+     * @param prefix A String that acts as a prefix for all the Collection
+     *               items
+     * @param suffix A String that acts as a suffix for all the Collection
+     *               items
      * 
      * @since 1.0.0
      */
-    public void out(Collection collection, String prefix, String suffix) {
-        Iterator it = collection.iterator();
+    public void out(Collection<T> collection, String prefix, String suffix) {
+        Iterator<T> it = collection.iterator();
 
         while (it.hasNext()) {
             System.out.print(prefix + it.next() + suffix);
@@ -111,20 +113,23 @@ public class Collections {
      * suffix of type string to the print statement and allowing to print each
      * element of the collection on different lines.
      * 
-     * @param collection
-     * @param prefix
-     * @param suffix
-     * @param printLine
+     * @param collection A generic type collection
+     * @param prefix A String that acts as a prefix for all the Collection
+     *               items
+     * @param suffix A String that acts as a suffix for all the Collection
+     *               items
+     * @param printLine A boolean to indicate whether the method should or not
+     *                  print a new line for each Collection item
      * 
      * @since 1.0.0
      */
-    public void out(Collection collection, String prefix, String suffix, boolean printLine) {
-        Iterator it = collection.iterator();
+    public void out(Collection<T> collection, String prefix, String suffix, boolean printLine) {
+        Iterator<T> it = collection.iterator();
 
         while (it.hasNext()) {
-            System.out.print(prefix + "" + it.next() + "" + suffix);
+            System.out.print(prefix + it.next() + suffix);
 
-            if (printLine == true) {
+            if (printLine) {
                 System.out.print("\n");
             }
         }
@@ -134,46 +139,42 @@ public class Collections {
      * A method that receives a collection and set the collection items with the
      * declared prefix for all items.
      * 
-     * @param collection
-     * @param prefix
-     * @return The collection with all the items concatenated with the prefix.
+     * @param collection A generic type collection
+     * @param prefix A String that acts as a prefix for all the Collection
+     *               items
+     * @return A String collection with all the items concatenated with the prefix.
      */
-    public Collection set(Collection collection, String prefix) {
-        Iterator it = collection.iterator();
-        ArrayList getCol = new ArrayList<>();
+    public Collection<String> set(Collection<T> collection, String prefix) {
+        Iterator<T> it = collection.iterator();
+        Collection<String> getCol = new ArrayList<>();
 
         while (it.hasNext()) {
             getCol.add(prefix + it.next());
         }
 
-        collection.clear();
-
-        collection.addAll(getCol);
-
-        return collection;
+        return getCol;
     }
 
     /**
      * A method that receives a collection and set the collection items with the
      * declared prefix and suffix for all items.
      * 
-     * @param collection
-     * @param prefix
-     * @param suffix
-     * @return The collection with all the items concatenated with the prefix and suffix.
+     * @param collection A generic type collection
+     * @param prefix A String that acts as a prefix for all the Collection
+     *               items
+     * @param suffix A String that acts as a suffix for all the Collection
+     *               items
+     *
+     * @return A String collection with all the items concatenated with the prefix and suffix.
      */
-    public Collection set(Collection collection, String prefix, String suffix) {
-        Iterator it = collection.iterator();
-        ArrayList getCol = new ArrayList<>();
+    public Collection<String> set(Collection<T> collection, String prefix, String suffix) {
+        Iterator<T> it = collection.iterator();
+        Collection<String> getCol = new ArrayList<>();
 
         while (it.hasNext()) {
             getCol.add(prefix + it.next() + suffix);
         }
 
-        collection.clear();
-
-        collection.addAll(getCol);
-
-        return collection;
+        return getCol;
     }
 }
