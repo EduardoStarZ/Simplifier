@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  * <p>
@@ -89,6 +90,7 @@ public class Files {
          * @since 1.0.0
          */
         public Files(String pathname) {
+
                 this.pathname = setPathname(pathname);
         }
 
@@ -97,10 +99,10 @@ public class Files {
          * A private method that runs when the constructor is
          * called, setting the pathname String to a valid pathname.
          * </p>
-         * 
+         *
          * @param pathname A String that acts as a pathname for the file location
          * @return The pathname to the constructor
-         * 
+         *
          * @since 1.0.0
          */
         private String setPathname(String pathname) {
@@ -112,211 +114,17 @@ public class Files {
 
         /**
          * <p>
-         * A method that creates a new file using the pathname
-         * provided in the pathname String.
-         * </p>
-         * 
-         * @throws InputMismatchException if the selected pathname already has a file with the same name,
-         *               if the program lacks permission to write in the folder
-         *               indicated.
-         * 
-         * @since 1.0.0
-         */
-        public boolean create() {
-
-                File file = new File(pathname);
-
-                boolean fileCreated;
-
-                String[] name = pathname.split("\\\\");
-                int length = name.length - 1;
-
-                if (file.exists()) {
-                        throw new InputMismatchException("The file " + name[length] + " already exists");
-                } else {
-                        try {
-                                fileCreated = file.createNewFile();
-                        } catch (Exception e) {
-                                throw new InputMismatchException("File could not be created, or the program lacks the permission to write to the selected folder");
-                        }
-                }
-
-                return fileCreated;
-        }
-
-        /**
-         * <p>
-         * A method that deletes a file using the pathname
-         * provided in the pathname String.
-         * </p>
-         * 
-         * @throws FileNotFoundException if the file can't be found, if the pathname is a folder
-         *               instead of a file.
-         * 
-         * @since 1.0.0
-         */
-        public void delete() throws FileNotFoundException {
-
-                String[] name = pathname.split("\\\\");
-                int length = name.length - 1;
-
-                File file = new File(pathname);
-
-                if (file.isFile()) {
-                        if (file.delete()) {
-                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
-                        }
-                } else {
-                        throw new InputMismatchException("Method delete() received a folder instead of a file");
-                }
-        }
-
-        /**
-         * <p>
-         * A method that receives a input and writes it
-         * to the file defined in the pathname String.
-         * </p>
-         * 
-         * @throws FileNotFoundException if the file can't be found.
-         * 
-         * @param input A String that acts as the content to be written into
-         *              the file, overriding whatever may be in there
-         * 
-         * @since 1.0.0
-         */
-        public void write(String input) throws FileNotFoundException {
-
-                String[] name = pathname.split("\\\\");
-                int length = name.length - 1;
-
-                try {
-                        File File = new File(pathname);
-                        FileWriter myWriter = new FileWriter(pathname);
-
-                        if (File.exists()) {
-                                myWriter.write(input);
-
-                        } else {
-                                myWriter.close();
-                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
-                        }
-                        myWriter.close();
-                } catch (Exception e) {
-                        throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
-                }
-
-        }
-
-        /**
-         * <p>
-         * A method that receives an input and appends it
-         * to the file defined in the pathname String.
-         * </p>
-         * 
-         * @throws FileNotFoundException if the file can't be found.
-         * 
-         * @param input A String that acts as the content to be concatenated
-         *              to the file, after whatever is in the file
-         * 
-         * @since 1.0.0
-         */
-        public void append(String input) throws FileNotFoundException {
-
-                String[] name = pathname.split("\\\\");
-                int length = name.length - 1;
-
-                try {
-                        File File = new File(pathname);
-                        FileWriter myWriter = new FileWriter(pathname);
-
-                        if (File.exists()) {
-                                myWriter.append(input);
-
-                        } else {
-                                myWriter.close();
-                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
-                        }
-
-                        myWriter.close();
-                } catch (Exception e) {
-                        throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
-                }
-        }
-
-        /**
-         * <p>
-         * A method that determines if the file can be
-         * read, wrote to and executed, and returns it in a
-         * boolean Array.
-         * </p>
-         * 
-         * @throws FileNotFoundException if the file can't be found.
-         * 
-         * @return An Array of booleans with the information about what the selected file can do, in order:
-         * read, write and execute.
-         * 
-         * @since 1.0.0
-         * 
-         */
-        public boolean[] can() throws FileNotFoundException {
-
-                String[] name = pathname.split("\\\\");
-                int length = name.length - 1;
-                boolean[] data = new boolean[3];
-
-                File file = new File(pathname);
-
-                if (file.exists()) {
-                        data[0] = file.canRead();
-                        data[1] = file.canWrite();
-                        data[2] = file.canExecute();
-                } else {
-                        throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
-                }
-
-                return data;
-        }
-
-        /**
-         * <p>
-         * A method that determines if the file
-         * defined by the pathname String exists, then it returns
-         * a boolean.
-         * 
-         * @throws InputMismatchException if the method receives a folder instead of a file.
-         * 
-         * @return A boolean that indicates if the file with the declared pathname exists.
-         * 
-         * @since 1.0.0
-         */
-        public boolean exists() {
-                File file = new File(pathname);
-                boolean exists = false;
-
-                if (file.isFile()) {
-                        if (file.exists()) {
-                                exists = true;
-                        }
-                } else {
-                        throw new InputMismatchException("Method exists received a folder instead of a file");
-                }
-
-                return exists;
-        }
-
-        /**
-         * <p>
          * A method that receives a new pathname to rename a
          * file, and sets it as the new pathname for that specified file
          * as long as the {@link Files} object does not receive a new value.
          * </p>
-         * 
+         *
          * @throws InputMismatchException if the file already exists or if the method receives a folder
          *               instead of a file.
-         * 
+         *
          * @param newPathname A String that will provide
          *                    the new pathname for the file location
-         * 
+         *
          * @since 1.0.0
          */
         public boolean rename(String newPathname) {
@@ -339,29 +147,284 @@ public class Files {
                 return isFileRenamed;
         }
 
-        /**
-         * <p>
-         * A method that checks if the selected file is a 
-         * hidden file in the System, then it returns a boolean.
-         * </p>
-         * 
-         * @throws InputMismatchException if the method receives a folder instead of a file.
-         * 
-         * @return A boolean that indicates if the file with the declared pathname is hidden.
-         * 
-         * @since 1.0.0
-         */
-        public boolean isHidden() {
-                File file = new File(pathname);
-                boolean hidden = false;
-                if (file.isFile()) {
-                        if (file.isHidden()) {
-                                hidden = true;
+                /**
+                 * <p>
+                 * A method that creates a new file using the pathname
+                 * provided in the pathname String.
+                 * </p>
+                 *
+                 * @throws InputMismatchException if the selected pathname already has a file with the same name,
+                 *               if the program lacks permission to write in the folder
+                 *               indicated.
+                 *
+                 * @since 1.0.0
+                 */
+                public boolean create() {
+
+                        File file = new File(pathname);
+
+                        boolean fileCreated;
+
+                        String[] name = pathname.split("\\\\");
+                        int length = name.length - 1;
+
+                        if (file.exists()) {
+                                throw new InputMismatchException("The file " + name[length] + " already exists");
+                        } else {
+                                try {
+                                        fileCreated = file.createNewFile();
+                                } catch (Exception e) {
+                                        throw new InputMismatchException("File could not be created, or the program lacks the permission to write to the selected folder");
+                                }
                         }
-                } else {
-                        throw new InputMismatchException("Method isHidden() received a folder instead of a file");
+
+                        return fileCreated;
                 }
 
-                return hidden;
+                /**
+                 * <p>
+                 * A method that deletes a file using the pathname
+                 * provided in the pathname String.
+                 * </p>
+                 *
+                 * @throws FileNotFoundException if the file can't be found, if the pathname is a folder
+                 *               instead of a file.
+                 *
+                 * @since 1.0.0
+                 */
+                public void delete() throws FileNotFoundException {
+
+                        String[] name = pathname.split("\\\\");
+                        int length = name.length - 1;
+
+                        File file = new File(pathname);
+
+                        if (file.isFile()) {
+                                if (file.delete()) {
+                                        throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                                }
+                        } else {
+                                throw new InputMismatchException("Method delete() received a folder instead of a file");
+                        }
+                }
+
+                /**
+                 * <p>
+                 * A method that determines if the file can be
+                 * read, wrote to and executed, and returns it in a
+                 * boolean Array.
+                 * </p>
+                 *
+                 * @throws FileNotFoundException if the file can't be found.
+                 *
+                 * @return An Array of booleans with the information about what the selected file can do, in order:
+                 * read, write and execute.
+                 *
+                 * @since 1.0.0
+                 *
+                 */
+                public boolean[] can() throws FileNotFoundException {
+
+                        String[] name = pathname.split("\\\\");
+                        int length = name.length - 1;
+                        boolean[] data = new boolean[3];
+
+                        File file = new File(pathname);
+
+                        if (file.exists()) {
+                                data[0] = file.canRead();
+                                data[1] = file.canWrite();
+                                data[2] = file.canExecute();
+                        } else {
+                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                        }
+
+                        return data;
+                }
+
+                /**
+                 * <p>
+                 * A method that determines if the file
+                 * defined by the pathname String exists, then it returns
+                 * a boolean.
+                 *
+                 * @throws InputMismatchException if the method receives a folder instead of a file.
+                 *
+                 * @return A boolean that indicates if the file with the declared pathname exists.
+                 *
+                 * @since 1.0.0
+                 */
+                public boolean exists() {
+                        File file = new File(pathname);
+                        boolean exists = false;
+
+                        if (file.isFile()) {
+                                if (file.exists()) {
+                                        exists = true;
+                                }
+                        } else {
+                                throw new InputMismatchException("Method exists received a folder instead of a file");
+                        }
+
+                        return exists;
+                }
+
+                /**
+                 * <p>
+                 * A method that checks if the selected file is a
+                 * hidden file in the System, then it returns a boolean.
+                 * </p>
+                 *
+                 * @throws InputMismatchException if the method receives a folder instead of a file.
+                 *
+                 * @return A boolean that indicates if the file with the declared pathname is hidden.
+                 *
+                 * @since 1.0.0
+                 */
+                public boolean isHidden() {
+                        File file = new File(pathname);
+                        boolean hidden = false;
+                        if (file.isFile()) {
+                                if (file.isHidden()) {
+                                        hidden = true;
+                                }
+                        } else {
+                                throw new InputMismatchException("Method isHidden() received a folder instead of a file");
+                        }
+
+                        return hidden;
+                }
+
+                /**
+                 * <p>
+                 * A method that receives a input and writes it
+                 * to the file defined in the pathname String.
+                 * </p>
+                 *
+                 * @throws FileNotFoundException if the file can't be found.
+                 *
+                 * @param input A String that acts as the content to be written into
+                 *              the file, overriding whatever may be in there
+                 *
+                 * @since 1.0.0
+                 */
+                public void write(String input) throws FileNotFoundException {
+
+                        String[] name = pathname.split("\\\\");
+                        int length = name.length - 1;
+
+                        try {
+                                File File = new File(pathname);
+                                FileWriter myWriter = new FileWriter(pathname);
+
+                                if (File.exists()) {
+                                        myWriter.write(input);
+
+                                } else {
+                                        myWriter.close();
+                                        throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                                }
+                                myWriter.close();
+                        } catch (Exception e) {
+                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                        }
+
+                }
+
+                /**
+                 * <p>
+                 * A method that receives an input and appends it
+                 * to the file defined in the pathname String.
+                 * </p>
+                 *
+                 * @throws FileNotFoundException if the file can't be found.
+                 *
+                 * @param input A String that acts as the content to be concatenated
+                 *              to the file, after whatever is in the file
+                 *
+                 * @since 1.0.0
+                 */
+                public void append(String input) throws FileNotFoundException {
+
+                        String[] name = pathname.split("\\\\");
+                        int length = name.length - 1;
+
+                        try {
+                                File File = new File(pathname);
+                                FileWriter myWriter = new FileWriter(pathname);
+
+                                if (File.exists()) {
+                                        myWriter.append(input);
+
+                                } else {
+                                        myWriter.close();
+                                        throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                                }
+
+                                myWriter.close();
+                        } catch (Exception e) {
+                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                        }
+                }
+
+                public String content() throws FileNotFoundException {
+
+                        File file = new File(pathname);
+                        Scanner scanner = new Scanner(file);
+                        StringBuilder content = null;
+
+                        while(scanner.hasNextLine()) {
+                                assert false;
+                                content.append(scanner.nextLine());
+                        }
+
+                        scanner.close();
+
+                        assert false;
+                        return content.toString();
+                }
+
+                public String contentAt(int line) throws FileNotFoundException {
+
+                        File file = new File(pathname);
+
+                        Scanner scanner = new Scanner(file);
+                        String content = null;
+
+                        for(int i=0; i<=line-1; i++) {
+                                content = scanner.nextLine();
+                        }
+                        scanner.close();
+
+                        return content;
+                }
+
+                /**
+                 *
+                 *
+                 * @param pathnameToCopy The pathname that will set the directory to create the copied
+                 *                       file
+                 *
+                 * @since 1.0.0
+                 * */
+                public void copy(String pathnameToCopy) throws FileNotFoundException {
+                        File file = new File(pathname);
+                        Scanner scanner = new Scanner(file);
+
+                        File copiedFile = new File(setPathname(pathnameToCopy));
+                        StringBuilder content = null;
+
+                        while(scanner.hasNextLine()) {
+                                assert false;
+                                content.append(scanner.nextLine());
+                        }
+                        Files myFile = new Files(pathnameToCopy);
+
+                        myFile.create();
+
+                        assert false;
+                        myFile.write(content.toString());
+
+                        scanner.close();
+                }
         }
-}
