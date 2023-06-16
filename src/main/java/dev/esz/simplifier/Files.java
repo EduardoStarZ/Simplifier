@@ -367,6 +367,17 @@ public class Files {
                         }
                 }
 
+                /**
+                 * <p>A method that access the contents of a file and copies it into
+                 * a String, preserving the line breaking with "/n" codes.
+                 * </p>
+                 *
+                 * @throws FileNotFoundException if the file can't be found
+                 *
+                 * @return A String containing the entire file content
+                 *
+                 * @since 1.0.0
+                 * */
                 public String content() throws FileNotFoundException {
 
                         File file = new File(pathname);
@@ -376,6 +387,7 @@ public class Files {
                         while(scanner.hasNextLine()) {
                                 assert false;
                                 content.append(scanner.nextLine());
+                                content.append("\n");
                         }
 
                         scanner.close();
@@ -384,6 +396,17 @@ public class Files {
                         return content.toString();
                 }
 
+                /**
+                 * <p>A method that access the contents of a file in a an
+                 * specified line and copies it into a String
+                 * </p>
+                 *
+                 * @throws FileNotFoundException if the file can't be found
+                 *
+                 * @return A String containing the content of the declared line
+                 *
+                 * @since 1.0.0
+                 * */
                 public String contentAt(int line) throws FileNotFoundException {
 
                         File file = new File(pathname);
@@ -400,11 +423,13 @@ public class Files {
                 }
 
                 /**
-                 *
+                 *<p> A method to copy the contents of a file into a new
+                 * one that will be created by the method when declaring the
+                 * pathname to the new file.
+                 *</p>
                  *
                  * @param pathnameToCopy The pathname that will set the directory to create the copied
                  *                       file
-                 *
                  * @since 1.0.0
                  * */
                 public void copy(String pathnameToCopy) throws FileNotFoundException {

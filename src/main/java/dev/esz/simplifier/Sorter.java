@@ -6,7 +6,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * <p>
- * A Java class that uses the quicksorting algorithym of the {@link ArrayUtils}
+ * A Java class that uses the quick-sorting algorithm of the {@link ArrayUtils}
  * class
  * and sorts any kind of data type (either primitive or wrapper). Stored on
  * arrays, these data are sorted based on it's value (ascending order by default
