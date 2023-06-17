@@ -29,28 +29,27 @@ public class AppTest {
     @Test
     public void testFiles() {
 
-        try{
-        Files myFile = new Files("myFile.txt");
+        try {
+            Files myFile = new Files("myFile.txt");
 
-        myFile.create();
-        // boolean[] can = myFile.can();
+            myFile.create();
+            // boolean[] can = myFile.can();
 
-        // for(int i=0; i<=can.length-1; i++) {
-        // System.out.println(can[i]);
-        //
+            // for(int i=0; i<=can.length-1; i++) {
+            // System.out.println(can[i]);
+            //
 
-        System.out.println(myFile.isHidden());
+            System.out.println(myFile.isHidden());
 
-        System.out.println(myFile.exists());
+            System.out.println(myFile.exists());
 
-        myFile.rename("newName.txt");
+            myFile.rename("newName.txt");
 
-        myFile.write("hello there");
+            myFile.write("hello there");
 
-        myFile = new Files("build/newName.txt");
-        myFile.delete();
-        }
-        catch (Exception ignored) {
+            myFile = new Files("build/newName.txt");
+            myFile.delete();
+        } catch (Exception ignored) {
 
         }
     }
@@ -86,5 +85,12 @@ public class AppTest {
     @Test
     public void testMathFactorial() {
         System.out.println(Mathematical.Factorial.factore(5));
+    }
+
+    @Test
+    public void testCopy() {
+        Files testFile = new Files("hey");
+
+        testFile.copy();
     }
 }

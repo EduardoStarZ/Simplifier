@@ -138,7 +138,6 @@ public class Files {
                                 throw new InputMismatchException("The file " + newName + "already exists");
                         } else {
                                 isFileRenamed = name.renameTo(newName);
-                                Files e = new Files(newPathname);
                         }
                 } else {
                         throw new InputMismatchException("Method rename() received a folder instead of a file");
@@ -159,7 +158,7 @@ public class Files {
                  *
                  * @since 1.0.0
                  */
-                public boolean create() {
+                public boolean create(){
 
                         File file = new File(pathname);
 
@@ -187,12 +186,12 @@ public class Files {
                  * provided in the pathname String.
                  * </p>
                  *
-                 * @throws FileNotFoundException if the file can't be found, if the pathname is a folder
+                 * @throws InputMismatchException if the file can't be found, if the pathname is a folder
                  *               instead of a file.
                  *
                  * @since 1.0.0
                  */
-                public void delete() throws FileNotFoundException {
+                public void delete(){
 
                         String[] name = pathname.split("\\\\");
                         int length = name.length - 1;
@@ -201,7 +200,7 @@ public class Files {
 
                         if (file.isFile()) {
                                 if (file.delete()) {
-                                        throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                                        throw new InputMismatchException("The file " + name[length] + " couldn't be found");
                                 }
                         } else {
                                 throw new InputMismatchException("Method delete() received a folder instead of a file");
@@ -215,7 +214,7 @@ public class Files {
                  * boolean Array.
                  * </p>
                  *
-                 * @throws FileNotFoundException if the file can't be found.
+                 * @throws InputMismatchException if the file can't be found.
                  *
                  * @return An Array of booleans with the information about what the selected file can do, in order:
                  * read, write and execute.
@@ -223,7 +222,7 @@ public class Files {
                  * @since 1.0.0
                  *
                  */
-                public boolean[] can() throws FileNotFoundException {
+                public boolean[] can(){
 
                         String[] name = pathname.split("\\\\");
                         int length = name.length - 1;
@@ -236,7 +235,7 @@ public class Files {
                                 data[1] = file.canWrite();
                                 data[2] = file.canExecute();
                         } else {
-                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                                throw new InputMismatchException("The file " + name[length] + " couldn't be found");
                         }
 
                         return data;
@@ -301,14 +300,14 @@ public class Files {
                  * to the file defined in the pathname String.
                  * </p>
                  *
-                 * @throws FileNotFoundException if the file can't be found.
+                 * @throws RuntimeException if the file can't be found.
                  *
                  * @param input A String that acts as the content to be written into
                  *              the file, overriding whatever may be in there
                  *
                  * @since 1.0.0
                  */
-                public void write(String input) throws FileNotFoundException {
+                public boolean write(String input){
 
                         String[] name = pathname.split("\\\\");
                         int length = name.length - 1;
@@ -319,16 +318,15 @@ public class Files {
 
                                 if (File.exists()) {
                                         myWriter.write(input);
-
                                 } else {
                                         myWriter.close();
                                         throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
                                 }
                                 myWriter.close();
                         } catch (Exception e) {
-                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                                throw new RuntimeException(e);
                         }
-
+                        return true;
                 }
 
                 /**
@@ -337,14 +335,14 @@ public class Files {
                  * to the file defined in the pathname String.
                  * </p>
                  *
-                 * @throws FileNotFoundException if the file can't be found.
+                 * @throws InputMismatchException if the file can't be found.
                  *
                  * @param input A String that acts as the content to be concatenated
                  *              to the file, after whatever is in the file
                  *
                  * @since 1.0.0
                  */
-                public void append(String input) throws FileNotFoundException {
+                public void append(String input){
 
                         String[] name = pathname.split("\\\\");
                         int length = name.length - 1;
@@ -363,7 +361,7 @@ public class Files {
 
                                 myWriter.close();
                         } catch (Exception e) {
-                                throw new FileNotFoundException("The file " + name[length] + " couldn't be found");
+                                throw new InputMismatchException(String.valueOf(e));
                         }
                 }
 
@@ -372,27 +370,30 @@ public class Files {
                  * a String, preserving the line breaking with "/n" codes.
                  * </p>
                  *
-                 * @throws FileNotFoundException if the file can't be found
+                 * @throws RuntimeException if the file can't be found
                  *
                  * @return A String containing the entire file content
                  *
                  * @since 1.0.0
                  * */
-                public String content() throws FileNotFoundException {
+                public String content(){
 
                         File file = new File(pathname);
-                        Scanner scanner = new Scanner(file);
-                        StringBuilder content = null;
+                        Scanner scanner;
+                        try {
+                                scanner = new Scanner(file);
+                        } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                        }
+                        StringBuilder content = new StringBuilder();
 
                         while(scanner.hasNextLine()) {
-                                assert false;
                                 content.append(scanner.nextLine());
                                 content.append("\n");
                         }
 
                         scanner.close();
 
-                        assert false;
                         return content.toString();
                 }
 
@@ -401,17 +402,22 @@ public class Files {
                  * specified line and copies it into a String
                  * </p>
                  *
-                 * @throws FileNotFoundException if the file can't be found
+                 * @throws RuntimeException if the file can't be found
                  *
                  * @return A String containing the content of the declared line
                  *
                  * @since 1.0.0
                  * */
-                public String contentAt(int line) throws FileNotFoundException {
+                public String contentAt(int line){
 
                         File file = new File(pathname);
 
-                        Scanner scanner = new Scanner(file);
+                        Scanner scanner;
+                        try {
+                                scanner = new Scanner(file);
+                        } catch (Exception e) {
+                                throw new RuntimeException(e);
+                        }
                         String content = null;
 
                         for(int i=0; i<=line-1; i++) {
@@ -432,24 +438,134 @@ public class Files {
                  *                       file
                  * @since 1.0.0
                  * */
-                public void copy(String pathnameToCopy) throws FileNotFoundException {
+                public void copy(String pathnameToCopy){
                         File file = new File(pathname);
-                        Scanner scanner = new Scanner(file);
+                        Scanner scanner;
+                        try {
+                                scanner = new Scanner(file);
+                        } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                        }
 
-                        File copiedFile = new File(setPathname(pathnameToCopy));
-                        StringBuilder content = null;
+                        File copyToFile = new File(setPathname(pathnameToCopy));
+                        StringBuilder content = new StringBuilder();
+                        int i=0;
 
                         while(scanner.hasNextLine()) {
-                                assert false;
+                                if(i!=0) {
+                                        content.append("\n");
+                                }
                                 content.append(scanner.nextLine());
+                                i++;
                         }
-                        Files myFile = new Files(pathnameToCopy);
+                        Files myFile = new Files(setPathname(pathnameToCopy));
 
                         myFile.create();
 
-                        assert false;
                         myFile.write(content.toString());
 
                         scanner.close();
+                }
+
+                public boolean copy() {
+                        Search mySearch = new Search(".", pathname);
+
+                        String[] splitPathname = pathname.split("\\\\");
+                        int pathnameLength = splitPathname.length-1;
+                        final String definitivePathname;
+
+                        if(mySearch.hasMatch()) {
+
+                                String[] splitFileName = (splitPathname[pathnameLength]).split("\\.");
+                                int fileNameLength = splitFileName.length-1;
+                                String fileExtension = splitFileName[fileNameLength];
+
+                                String directoryLocation;
+                                StringBuilder buildDirectory = new StringBuilder();
+
+                                for(int i=0; i<=pathnameLength-1; i++) {
+                                        buildDirectory.append(splitPathname[i]).append("/");
+                                }
+                                directoryLocation = buildDirectory.toString();
+
+                                String completeFileName;
+                                StringBuilder buildFileName = new StringBuilder();
+
+                                if(fileNameLength > 1) {
+                                        for(int i=0; i<=fileNameLength-1; i++) {
+                                                if(i!=0) {
+                                                        buildFileName.append(".");
+                                                }
+                                                buildFileName.append(splitFileName[i]);
+                                        }
+                                        completeFileName = directoryLocation + buildFileName + "("+1+")" + "." + fileExtension;
+
+                                        Files tryFile = new Files(completeFileName);
+
+                                        for(int i=2; ; i++) {
+                                                if(tryFile.exists()) {
+                                                   completeFileName = directoryLocation + buildFileName + "("+i+")" + "." + fileExtension;
+                                                   tryFile = new Files(completeFileName);
+                                                }
+                                                else {
+                                                        definitivePathname = completeFileName;
+                                                        break;
+                                                }
+                                        }
+                                }
+                                else {
+                                        for(int i=0; i<=fileNameLength-1; i++) {
+                                                buildFileName.append(splitFileName[i]);
+                                        }
+                                        completeFileName = directoryLocation + buildFileName + "("+1+")" + "." + fileExtension;
+
+                                        File tryFile = new File(completeFileName);
+
+                                        for(int i=2; ; i++) {
+                                                if(tryFile.exists()) {
+                                                        completeFileName = directoryLocation + buildFileName + "("+i+")" + "." + fileExtension;
+                                                        tryFile = new File(completeFileName);
+                                                }
+                                                else {
+                                                        definitivePathname = completeFileName;
+                                                        break;
+                                                }
+                                        }
+                                }
+
+                        }
+                        else {
+                                String fileName = splitPathname[pathnameLength];
+
+                                String directoryLocation;
+                                StringBuilder buildDirectory = new StringBuilder();
+
+                                for(int i=0; i<=pathnameLength-1; i++) {
+                                        buildDirectory.append(splitPathname[i]).append("/");
+                                }
+                                directoryLocation = buildDirectory.toString();
+
+                                String completeFileName = directoryLocation + fileName + "("+1+")";
+                                Files tryFile = new Files(completeFileName);
+
+                                for(int i=2; ; i++) {
+                                        if(tryFile.exists()) {
+                                                completeFileName = directoryLocation + fileName + "("+i+")";
+                                                tryFile = new Files(completeFileName);
+                                        }
+                                        else{
+                                                definitivePathname = completeFileName;
+                                                break;
+                                        }
+                                }
+
+
+                        }
+
+                        Files copy = new Files(pathname);
+
+                        copy.copy(definitivePathname);
+
+                        return true;
                 }
         }
