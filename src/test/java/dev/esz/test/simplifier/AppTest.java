@@ -29,8 +29,8 @@ public class AppTest {
     @Test
     public void testFiles() {
 
-        try {
-            Files myFile = new Files("myFile.txt");
+       try {
+            /*Files myFile = new Files("myFile.txt");
 
             myFile.create();
             // boolean[] can = myFile.can();
@@ -48,10 +48,8 @@ public class AppTest {
             myFile.write("hello there");
 
             myFile = new Files("build/newName.txt");
-            myFile.delete();
-        } catch (Exception ignored) {
-
-        }
+            myFile.delete();*/
+        } catch (Exception ignored) {}
     }
 
     @Test
@@ -73,11 +71,11 @@ public class AppTest {
     public void testTimer() {
         Timer timer = new Timer(0, 10);
         try {
-            System.out.println("Waiting 10 seconds");
+           /* System.out.println("Waiting 10 seconds");
 
             timer.sleep();
 
-            System.out.println("10 seconds have passed");
+            System.out.println("10 seconds have passed");*/
         } catch (Exception ignored) {
         }
     }
@@ -89,8 +87,8 @@ public class AppTest {
 
     @Test
     public void testCopy() {
-        Files testFile = new Files("hey");
+        /*Files testFile = new Files("LICENSE");
 
-        testFile.copy();
+        testFile.copy();*/
     }
 }

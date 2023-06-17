@@ -203,8 +203,6 @@ public class Folder {
                                 throw new InputMismatchException("The folder " + newName + "already exists");
                         } else {
                                 isFolderRenamed = name.renameTo(newName);
-                                Folder e = new Folder(newPathname);
-
                         }
                 } else {
                         throw new InputMismatchException("Class rename received a file instead of a folder");

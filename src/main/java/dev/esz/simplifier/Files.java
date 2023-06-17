@@ -467,7 +467,26 @@ public class Files {
                         scanner.close();
                 }
 
-                public boolean copy() {
+                /**
+                 * <p>A method that copies the file specified in the pathname class
+                 * and adds a number indicating that the copied file is a different
+                 * one from the original (similar to how some OS's do when a file is copied)
+                 *
+                 * <pre>
+                 *     <blockquote>
+                 *         Files myFile = new File("myFile.txt");
+                 *
+                 *         myFile.copy();
+                 *         //this will generate a new file in the same directory, but with
+                 *         //name "myFile(1).txt"
+                 *     </blockquote>
+                 * </pre>
+                 *
+                 * </p>
+                 *
+                 * @since 1.0.0
+                 * */
+                public void copy() {
                         Search mySearch = new Search(".", pathname);
 
                         String[] splitPathname = pathname.split("\\\\");
@@ -565,7 +584,5 @@ public class Files {
                         Files copy = new Files(pathname);
 
                         copy.copy(definitivePathname);
-
-                        return true;
                 }
         }

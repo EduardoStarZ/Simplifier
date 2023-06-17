@@ -197,13 +197,18 @@ public class Timer {
      * it'll be set all to milliseconds for processing.
      * </p>
      * 
-     * @throws InterruptedException if the current thread is interrupted while
+     * @throws RuntimeException if the current thread is interrupted while
      *                              waiting, in any means.
      */
-    public boolean sleep() throws InterruptedException {
+    public boolean sleep(){
         CountDownLatch timer = new CountDownLatch(1);
 
-        boolean finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
+        boolean finished = false;
+        try {
+            finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         timer.countDown();
 
@@ -225,14 +230,19 @@ public class Timer {
      * </p>
      * 
      * @param count defines the amount of times the timer will run.
-     * @throws InterruptedException if the current thread is interrupted while
+     * @throws RuntimeException if the current thread is interrupted while
      *                              waiting, in any means.
      */
-    public boolean sleep(int count) throws InterruptedException {
+    public boolean sleep(int count){
 
         CountDownLatch timer = new CountDownLatch(count);
 
-        boolean finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
+        boolean finished = false;
+        try {
+            finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         timer.countDown();
 
