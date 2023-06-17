@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Simplifier:jar">
+    <output-path>$PROJECT_DIR$/src/main/resources/artifacts/Simplifier_jar</output-path>
+    <root id="archive" name="Simplifier.jar">
+      <element id="module-output" name="Simplifier" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
