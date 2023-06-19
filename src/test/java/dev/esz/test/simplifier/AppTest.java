@@ -87,8 +87,13 @@ public class AppTest {
 
     @Test
     public void testCopy() {
-        /*Files testFile = new Files("LICENSE");
+        /* Files testFile = new Files("LICENSE");
 
         testFile.copy();*/
+    }
+    @Test
+    public void testMathRandom() {
+        Mathematical.random<String> myObj= new Mathematical.random<>("");
+        myObj.generate();
     }
 }
