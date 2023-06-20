@@ -22,7 +22,7 @@ Make sure you have Maven installed in your IDE or in your
 personal computer, after that, when you have created a Maven
 project, insert the following code into the ```pom.xml``` file, inside the ```dependencies``` tag:
 
-```bash
+```
   <dependency>
     <groupId>dev.esz</groupId>
     <artifactId>simplifier</artifactId>
@@ -35,7 +35,7 @@ After that, do ```$ mvn install``` on a terminal and now your project has the Si
 
 Install the ```.jar``` file at Releases, and put the following in the ```pom.xml``` file, changing the ```version``` tag and the (version) value at the ```<systemPath>```:
 
-```bash
+```
 <dependency>
     <groupId>dev.esz</groupId>
     <artifactId>simplifier</artifactId>
@@ -52,7 +52,8 @@ personal computer, after that, when you have created a Gradle
 project, insert the following code into the ```build.gradle``` file:
 
 In the ```repositories``` region:
-```bash
+
+```
 repositories {
     mavenCentral() {
         content {
@@ -71,10 +72,11 @@ repositories {
 
 In the ```dependencies``` region:
 
-```bash
+```
 dependencies {
     implementation 'dev.esz:simplifier:1.0.0'
     ....
 }
 ```
+
 After that, run ```$ ./gradlew build``` on a terminal and your project has the Simplifier library installed.
