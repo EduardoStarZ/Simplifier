@@ -91,9 +91,15 @@ public class AppTest {
 
         testFile.copy();*/
     }
+
     @Test
-    public void testMathRandom() {
-        Mathematical.random<String> myObj= new Mathematical.random<>("");
-        myObj.generate();
+    public void testEncryption() {
+        Cryptography myCrypt = new Cryptography("Hey", "1234567890111213");
+        byte[] encryptedMessage = myCrypt.accessSecretKey();
+        for(int i=0; i<=encryptedMessage.length-1; i++) {
+            System.out.println(encryptedMessage[i]);
+        }
     }
+
+
 }
