@@ -3,8 +3,6 @@
 Simplifier is java library that simplifies some operations that, in Java, require loads and loads
 of code lines, making a java file look way too crowded.
 
-##
-##
 # Classes
 
 - Collections
@@ -73,8 +71,6 @@ of code lines, making a java file look way too crowded.
 
 - sleep
 
-##
-##
 
 ## Setting Simplifier in your Maven project
 
