@@ -18,6 +18,8 @@ import java.security.NoSuchAlgorithmException;
  * @see javax.crypto.Cipher
  * @see java.nio.charset.StandardCharsets
  * @see java.security.InvalidKeyException
+ * @see java.security.NoSuchAlgorithmException
+ * @see javax.crypto.spec.SecretKeySpec
  *
  * @author EduardoStarZ
  *
