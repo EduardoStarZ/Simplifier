@@ -84,4 +84,54 @@ public class Mathematical {
             return factorial;
         }
     }
+    /**
+     * <p>A Java subclass to handle with Pythagorean Theorem values,
+     * such as cathetus and hypotenuse </p>
+     *
+     * @author EduardoStarZ
+     *
+     * @since 1.0.0
+     * */
+    public static class PyTheorem {
+
+        /**
+         *
+         * <p>A method that receives the values of both cathetus and returns the value of the hypotenuse
+         * </p>
+         *
+         * @param adjCat A double value for the adjacent cathetus
+         * @param opoCat A double value for the opposite cathetus
+         *
+         * @return A double value containing the hypotenuse
+         *
+         * @since 1.0.0
+         * */
+        public static double getHip(double adjCat, double opoCat) {
+            adjCat *= adjCat;
+            opoCat *= opoCat;
+
+            return Math.sqrt(adjCat + opoCat);
+        }
+
+        /**
+         *
+         * <p>A method that receives the values of both cathetus and returns the value of the hypotenuse
+         * </p>
+         *
+         * @param cat A double value for a cathetus
+         * @param hyp A double value for the hypotenuse
+         *
+         * @return A double value containing the second cathetus
+         *
+         * @since 1.0.0
+         * */
+        public static double getCat(double cat, double hyp) {
+            cat *= cat;
+            hyp *= hyp;
+
+            return Math.sqrt(hyp - cat);
+        }
+    }
+
+
 }
