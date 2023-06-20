@@ -28,7 +28,7 @@ project, insert the following code into the ```pom.xml``` file, inside the ```de
     <version>1.0.0</version>
 ``` 
 
-After that, do ```$ mvn install``` and now your project has the Simplifier library installed
+After that, do ```$ mvn install``` on a terminal and now your project has the Simplifier library installed locally
 
 ## You can also install it with a local ```.jar``` file
 
