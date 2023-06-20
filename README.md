@@ -3,8 +3,9 @@
 Simplifier is java library that simplifies some operations that, in Java, require loads and loads
 of code lines, making a java file look way too crowded.
 
-
-## Classes
+##
+##
+# Classes
 
 - Collections
 - Cryptography
@@ -15,6 +16,65 @@ of code lines, making a java file look way too crowded.
 - Sorter
 - Timer
 
+# Methods
+
+### Collections
+
+- out
+- set
+
+### Cryptography
+
+- encrypt
+- decrypt
+- accessSecretKey
+
+### Files 
+
+- rename
+- create
+- delete
+- can
+- exists
+- isHidden
+- write
+- append
+- content
+- contentAt
+- copy
+
+### Folder
+
+- filesInFolder
+- foldersInFolder
+- rename
+- isHidden
+- exists
+
+## Mathematical (Factorial)
+
+- factore
+
+## Mathematical (PyTheorem)
+
+- getHip
+- getCat
+
+## Search
+
+- hasMatch
+- indexOf
+
+## Sorter
+
+- sort
+
+## Timer
+
+- sleep
+
+##
+##
 
 ## Setting Simplifier in your Maven project
 
