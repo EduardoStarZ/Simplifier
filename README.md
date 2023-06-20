@@ -7,6 +7,7 @@ of code lines, making a java file look way too crowded.
 ## Classes
 
 - Collections
+- Cryptography
 - Files
 - Folder
 - Mathematical (Factorial)
@@ -66,7 +67,7 @@ repositories {
     }
     ....
 }
-``` 
+```
 
 In the ```dependencies``` region:
 
