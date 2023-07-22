@@ -2,11 +2,10 @@ package dev.esz.simplifier;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 /**
  * <p>
- * A Java class for managing and analising the contents and properties of
+ * A Java class for managing and analysing the contents and properties of
  * a {@link Folder} and the {@link Folder} itself.
  * 
  * </p>
@@ -70,6 +69,125 @@ import java.util.InputMismatchException;
  * 
  */
 
+/**
+ *
+ * @author EduardoStarZ
+ *
+ * @since 1.1.0
+ * */
+class FolderNotFoundException extends RuntimeException {
+
+        /**
+         * <p>A java exception to point when a folder can't be found, caused whether by bad input or if a file
+         * pathname is provided to a {@link Folder} Object.
+         * </p>
+         *
+         * @param message a String that receives the message to be outputted to the terminal when it is thrown.
+         *
+         * @author EduardoStarZ
+         *
+         * @see java.lang.Exception
+         *
+         * @since 1.1.0
+         * */
+        public FolderNotFoundException(String message) {
+                super(message);
+        }
+
+        /**
+         * <p>A java exception to point when a folder can't be found, caused whether by bad input or if a file
+         * pathname is provided to a {@link Folder} Object.
+         * </p>
+         *
+         * @param message A String that receives the message to be outputted to the terminal when it is thrown.
+         *
+         * @param error A throwable object, generally used to pass the root cause of an exception.
+         *
+         * @author EduardoStarZ
+         *
+         * @see java.lang.Exception
+         *
+         * @since 1.1.0
+         * */
+        public FolderNotFoundException(String message, Throwable error) {
+                super(message, error);
+        }
+}
+
+class FolderAlreadyExistsException extends RuntimeException {
+
+        /**
+         * <p>A java exception to point when a folder already exists while using the {@link Folder} class.
+         * </p>
+         *
+         * @param message A String that receives the message to be outputted to the terminal when it is thrown.
+         *
+         * @author EduardoStarZ
+         *
+         * @see java.lang.Exception
+         *
+         * @since 1.1.0
+         * */
+        public FolderAlreadyExistsException(String message) {
+                super(message);
+        }
+
+        /**
+         * <p>A java exception to point when a folder already exists while using the {@link Folder} class.
+         * </p>
+         *
+         * @param message A String that receives the message to be outputted to the terminal when it is thrown.
+         *
+         * @param error A throwable object, generally used to pass the root cause of an exception.
+         *
+         * @author EduardoStarZ
+         *
+         * @see java.lang.Exception
+         *
+         * @since 1.1.0
+         * */
+        public FolderAlreadyExistsException(String message, Throwable error) {
+                super(message, error);
+        }
+}
+
+class FolderIsEmptyException extends RuntimeException {
+
+        /**
+         * <p>A java exception to point when a folder is empty while using the {@link Folder} class.
+         * </p>
+         *
+         * @param message A String that receives the message to be outputted to the terminal when it is thrown.
+         *
+         * @author EduardoStarZ
+         *
+         * @see java.lang.Exception
+         *
+         * @since 1.1.0
+         * */
+        public FolderIsEmptyException(String message) {
+                super(message);
+        }
+
+        /**
+         * <p>A java exception to point when a folder is empty while using the {@link Folder} class.
+         * </p>
+         *
+         * @param message A String that receives the message to be outputted to the terminal when it is thrown.
+         *
+         * @param error A throwable object, generally used to pass the root cause of an exception.
+         *
+         * @author EduardoStarZ
+         *
+         * @see java.lang.Exception
+         *
+         * @since 1.1.0
+         * */
+        public FolderIsEmptyException(String message, Throwable error) {
+                super(message, error);
+        }
+}
+
 public class Folder {
         private String pathname;
 
@@ -131,6 +249,12 @@ public class Folder {
                 File[] fileList = folder.listFiles();
                 ArrayList<String> file = new ArrayList<String>();
 
+                if(fileList == null) {
+                        FolderIsEmptyException e = new FolderIsEmptyException("The Folder does not contain any files");
+                        e.printStackTrace();
+                        throw e;
+                }
+
                 for (int i = 0; i <= fileList.length - 1; i++) {
                         File getFile = fileList[i];
 
@@ -139,9 +263,7 @@ public class Folder {
                         }
                 }
 
-                Object[] files = file.toArray();
-
-                return files;
+                return file.toArray();
         }
 
         /**
@@ -162,6 +284,12 @@ public class Folder {
                 File[] folderList = Folder.listFiles();
                 ArrayList<String> folder = new ArrayList<String>();
 
+                if(folderList == null) {
+                        FolderIsEmptyException e = new FolderIsEmptyException("The Folder does not contain any folders");
+                        e.printStackTrace();
+                        throw e;
+                }
+
                 for (int i = 0; i <= folderList.length - 1; i++) {
                         File getFolder = folderList[i];
 
@@ -181,9 +309,11 @@ public class Folder {
          * as long as the {@link Folder} object does not receive a new value.
          * </p>
          * 
-         * @throws InputMismatchException if it tries to rename a file instead of a
-         *                                folder, or if the new name is already taken by
-         *                                another folder.
+         * @throws FolderNotFoundException if it tries to rename a file instead of a
+         *                                folder.
+         *
+         * @throws FolderIsEmptyException If the new name is already taken by
+         *                                      another folder.
          * 
          * @param newPathname A String that acts as the new pathname for the folder
          *                    location
@@ -200,12 +330,12 @@ public class Folder {
 
                 if (!name.isFile()) {
                         if (newName.exists()) {
-                                throw new InputMismatchException("The folder " + newName + "already exists");
+                                throw new FolderAlreadyExistsException("The folder " + newName + "already exists");
                         } else {
                                 isFolderRenamed = name.renameTo(newName);
                         }
                 } else {
-                        throw new InputMismatchException("Class rename received a file instead of a folder");
+                        throw new FolderNotFoundException("A file was provided instead of a folder");
                 }
 
                 return isFolderRenamed;
@@ -217,7 +347,7 @@ public class Folder {
          * and returns a boolean value.
          * </p>
          * 
-         * @throws InputMismatchException if it tries to check for a file instead of a
+         * @throws FolderNotFoundException if it tries to check for a file instead of a
          *                                folder.
          * 
          * @return A boolean that indicates if the folder is or not a hidden one.
@@ -232,7 +362,7 @@ public class Folder {
                                 hidden = true;
                         }
                 } else {
-                        throw new InputMismatchException("Class rename received a file instead of a folder");
+                        throw new FolderNotFoundException("A file was provided instead of a folder");
                 }
 
                 return hidden;
@@ -243,7 +373,7 @@ public class Folder {
          * A method that checks if a folder exists,
          * returns a boolean value.
          * 
-         * @throws InputMismatchException if the method receives a file pathname instead
+         * @throws FolderNotFoundException if the method receives a file pathname instead
          *                                of a folder pathname.
          * 
          * @return A boolean that indicates if the folder in the declared pathname exists.
@@ -251,16 +381,136 @@ public class Folder {
          * @since 1.0.0
          */
         public boolean exists() {
-                File folder = new File(pathname);
-                boolean exists = false;
+                Folder folder = new Folder(pathname);
 
-                if (!folder.isFile()) {
-                        if (folder.exists()) {
-                                exists = true;
-                        }
-                } else {
-                        throw new InputMismatchException("Method rename received a file instead of a folder");
+                if (folder.exists()) {
+                        return true;
                 }
-                return exists;
+
+                if(!folder.isFolder()){
+                        throw new FolderNotFoundException("A file was provided instead of a folder");
+                }
+
+                return false;
+        }
+
+
+        /**
+         * <p>A method that points if the specified pathname provided is a folder</p>
+         *
+         * @return A boolean that indicates if the provided pathname points to a folder.
+         *
+         * @since 1.1.0
+         * */
+        public boolean isFolder() {
+                File folder = new File(pathname);
+
+                return !folder.isFile();
+        }
+
+        /**
+         *<p>A method that create folders, provided by the pathname set. If the pathname
+         * specifies more than one folder to be created, the method will create all folders specified
+         *</p>
+         *
+         * <p>If the method tries to create a folder that already exists, it'll ignore it, and go onto the next</p>
+         *
+         * @return A boolean that indicates if the folders could be created or not
+         *
+         * @since 1.1.0
+         * */
+        public boolean create() {
+                File folder = new File(pathname);
+
+                if(folder.exists()) {
+                        return true;
+                }
+
+                return folder.mkdirs();
+        }
+
+        /**
+         * <p> A method that searches for the last folder in the pathname provided
+         * and retrieves it's pathname </p>
+         *
+         * @return A string containing the pathname for the last folder in the pathname.
+         *
+         * @throws FolderNotFoundException if the pathname does not provide any folders.
+         *
+         * @since 1.1.0
+         * */
+        public String getLastFolderPathname() {
+                Folder folder = new Folder(pathname);
+                String[] pathname = folder.pathname.split("\\\\");
+                StringBuilder newPathname = new StringBuilder();
+
+                if(!folder.isFolder() && pathname.length < 1) {
+                        FolderNotFoundException e = new FolderNotFoundException("The provided pathname did not pointed to a folder");
+                        e.printStackTrace();
+                        throw e;
+                }
+
+                if(!folder.isFolder()) {
+                        for(int i=0; i<=pathname.length-2; i++) {
+                                newPathname.append(pathname[i]).append("\\\\");
+                        }
+                        return newPathname.toString();
+                }
+
+                return this.pathname;
+        }
+
+        /**
+         * <p> A method that searches for the first folder in the pathname provided
+         * and retrieves it's pathname </p>
+         *
+         * @return A string containing the pathname for the first folder in the pathname.
+         *
+         * @throws FolderNotFoundException if the pathname does not provide any folders.
+         *
+         * @since 1.1.0
+         * */
+        public String getFirstFolderPathname() {
+                Folder folder = new Folder(pathname);
+                String[] pathname = folder.pathname.split("\\\\");
+
+                if(!folder.isFolder() && pathname.length < 1) {
+                        FolderNotFoundException e = new FolderNotFoundException("The provided pathname did not pointed to a folder");
+                        e.printStackTrace();
+                        throw e;
+                }
+
+                return pathname[0];
+        }
+
+        /**
+         * <p> A method that searches for the defined number of the folder in the pathname provided
+         * and retrieves it's pathname </p>
+         *
+         * <p>The index should be treated as starting on the 0</p>
+         *
+         * <p>Ex: 0 is the first position, 1 is the second and so forth</p>
+         *
+         * @return A string containing the pathname for the indicated folder in the pathname.
+         *
+         * @throws FolderNotFoundException if the pathname does not provide any folders.
+         *
+         * @since 1.1.0
+         * */
+        public String getFolderInIndexPathname(int index) {
+                Folder folder = new Folder(pathname);
+                String[] pathname = folder.pathname.split("\\\\");
+                StringBuilder newPathname = new StringBuilder();
+
+                if(!folder.isFolder() && pathname.length < 1) {
+                        FolderNotFoundException e = new FolderNotFoundException("The provided pathname did not pointed to a folder");
+                        e.printStackTrace();
+                        throw e;
+                }
+
+                for(int i=0; i<=index; i++) {
+                        newPathname.append(pathname[i]).append("\\\\");
+                }
+                return newPathname.toString();
         }
 }

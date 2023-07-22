@@ -585,4 +585,57 @@ public class Files {
 
                         copy.copy(definitivePathname);
                 }
+
+                /**
+                 * <p>A method that checks if the provided pathname points to a file and
+                 * returns a boolean value on it's checking</p>
+                 *
+                 * @return A boolean that indicates if the provided pathname points to a File.
+                 *
+                 * @since 1.1.0
+                 * */
+                public boolean isFile() {
+                        File file = new File(pathname);
+
+                        return file.isFile();
+                }
+
+                /**
+                 * <p>A method that reads the file in the specified pathname, provided that the file can be read,
+                 * and prints it on the console
+                 * </p>
+                 *
+                 * <pre>
+                 *     <blockquote>
+                 *         Files file = new Files(pathname/to/file);
+                 *
+                 *         boolean hadAnOutput = file.read();
+                 *         //this will print the file contents in the console, if the file can be read,
+                 *         //and return a boolean value according to this result
+                 *
+                 *     </blockquote>
+                 * </pre>
+                 *
+                 * @return A boolean that indicates if the file can be read
+                 *
+                 * @since 1.1.0
+                 * */
+                public boolean read() {
+                        Scanner reader = new Scanner(pathname);
+                        Files file = new Files(pathname);
+
+                        if(!file.exists() || !file.isFile()) {
+                                return false;
+                        }
+
+                        //in this case, the [0] array pos references the readability of the file
+                        if(file.can()[0]) {
+                                while(reader.hasNextLine()) {
+                                        reader.nextLine();
+                                }
+                                return true;
+                        }
+
+                        return false;
+                }
         }

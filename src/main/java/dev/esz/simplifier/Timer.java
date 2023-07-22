@@ -42,6 +42,17 @@ import java.util.concurrent.TimeUnit;
  * 
  * @since 1.0.0
  */
+
+class TimerInterruptedException extends RuntimeException {
+    public TimerInterruptedException(String message) {
+        super(message);
+    }
+
+    public TimerInterruptedException(String message, Throwable error) {
+        super(message, error);
+    }
+}
+
 public class Timer {
 
     private long hours;
@@ -207,7 +218,8 @@ public class Timer {
         try {
             finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            throw new TimerInterruptedException("The current thread of the timer was interrupted");
         }
 
         timer.countDown();
@@ -241,7 +253,8 @@ public class Timer {
         try {
             finished = timer.await(totalTime, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            throw new TimerInterruptedException("The current thread of the timer was interrupted");
         }
 
         timer.countDown();
