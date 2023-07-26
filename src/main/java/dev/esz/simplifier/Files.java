@@ -446,8 +446,7 @@ public class Files {
                         } catch (FileNotFoundException e) {
                                 throw new RuntimeException(e);
                         }
-
-                        File copyToFile = new File(setPathname(pathnameToCopy));
+                        
                         StringBuilder content = new StringBuilder();
                         int i=0;
 
@@ -625,6 +624,7 @@ public class Files {
                         Files file = new Files(pathname);
 
                         if(!file.exists() || !file.isFile()) {
+                                reader.close();
                                 return false;
                         }
 
@@ -633,8 +633,11 @@ public class Files {
                                 while(reader.hasNextLine()) {
                                         reader.nextLine();
                                 }
+                                reader.close();
                                 return true;
                         }
+
+                        reader.close();
 
                         return false;
                 }

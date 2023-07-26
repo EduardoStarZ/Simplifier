@@ -1,7 +1,5 @@
 package dev.esz.simplifier;
 
-import java.util.Random;
-
 /**
  * <p> A java class that contains different mathematical operations stored in subclasses
  * </p>
