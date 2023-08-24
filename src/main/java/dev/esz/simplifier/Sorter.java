@@ -59,7 +59,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static String[] sort(String[] sort) {
+        public String[] sort(String[] sort) {
                 Arrays.sort(sort);
                 return sort;
         }
@@ -76,7 +76,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static String[] sort(String[] sort, boolean descendingOrder) {
+        public String[] sort(String[] sort, boolean descendingOrder) {
                 Arrays.sort(sort);
 
                 if (descendingOrder) {
@@ -98,7 +98,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static int[] sort(int[] sort) {
+        public int[] sort(int[] sort) {
 
                 Arrays.sort(sort);
 
@@ -117,7 +117,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static int[] sort(int[] sort, boolean descendingOrder) {
+        public int[] sort(int[] sort, boolean descendingOrder) {
 
                 Integer[] objSort = ArrayUtils.toObject(sort);
 
@@ -144,7 +144,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Integer[] sort(Integer[] sort) {
+        public Integer[] sort(Integer[] sort) {
 
                 Arrays.sort(sort);
 
@@ -163,7 +163,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Integer[] sort(Integer[] sort, boolean descendingOrder) {
+        public Integer[] sort(Integer[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
@@ -186,7 +186,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static long[] sort(long[] sort) {
+        public long[] sort(long[] sort) {
 
                 Arrays.sort(sort);
 
@@ -205,7 +205,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static long[] sort(long[] sort, boolean descendingOrder) {
+        public long[] sort(long[] sort, boolean descendingOrder) {
 
                 Long[] objSort = ArrayUtils.toObject(sort);
 
@@ -232,7 +232,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Long[] sort(Long[] sort) {
+        public Long[] sort(Long[] sort) {
 
                 Arrays.sort(sort);
 
@@ -251,7 +251,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Long[] sort(Long[] sort, boolean descendingOrder) {
+        public Long[] sort(Long[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
@@ -274,7 +274,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static char[] sort(char[] sort) {
+        public char[] sort(char[] sort) {
                 Arrays.sort(sort);
 
                 return sort;
@@ -292,7 +292,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static char[] sort(char[] sort, boolean descendingOrder) {
+        public char[] sort(char[] sort, boolean descendingOrder) {
                 Character[] objSort = ArrayUtils.toObject(sort);
 
                 if (descendingOrder) {
@@ -318,7 +318,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Character[] sort(Character[] sort) {
+        public Character[] sort(Character[] sort) {
 
                 Arrays.sort(sort);
 
@@ -337,7 +337,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Character[] sort(Character[] sort, boolean descendingOrder) {
+        public Character[] sort(Character[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
@@ -360,7 +360,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static byte[] sort(byte[] sort) {
+        public byte[] sort(byte[] sort) {
                 Arrays.sort(sort);
 
                 return sort;
@@ -378,7 +378,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static byte[] sort(byte[] sort, boolean descendingOrder) {
+        public byte[] sort(byte[] sort, boolean descendingOrder) {
                 Byte[] objSort = ArrayUtils.toObject(sort);
 
                 if (descendingOrder) {
@@ -404,7 +404,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Byte[] sort(Byte[] sort) {
+        public Byte[] sort(Byte[] sort) {
 
                 Arrays.sort(sort);
 
@@ -423,7 +423,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Byte[] sort(Byte[] sort, boolean descendingOrder) {
+        public Byte[] sort(Byte[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
@@ -446,7 +446,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static short[] sort(short[] sort) {
+        public short[] sort(short[] sort) {
                 Arrays.sort(sort);
 
                 return sort;
@@ -464,7 +464,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static short[] sort(short[] sort, boolean descendingOrder) {
+        public short[] sort(short[] sort, boolean descendingOrder) {
                 Short[] objSort = ArrayUtils.toObject(sort);
 
                 if (descendingOrder) {
@@ -490,7 +490,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Short[] sort(Short[] sort) {
+        public Short[] sort(Short[] sort) {
 
                 Arrays.sort(sort);
 
@@ -509,7 +509,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Short[] sort(Short[] sort, boolean descendingOrder) {
+        public Short[] sort(Short[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
@@ -533,7 +533,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static float[] sort(float[] sort) {
+        public float[] sort(float[] sort) {
                 Arrays.sort(sort);
 
                 return sort;
@@ -551,7 +551,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static float[] sort(float[] sort, boolean descendingOrder) {
+        public float[] sort(float[] sort, boolean descendingOrder) {
                 Float[] objSort = ArrayUtils.toObject(sort);
 
                 if (descendingOrder) {
@@ -577,7 +577,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Float[] sort(Float[] sort) {
+        public Float[] sort(Float[] sort) {
 
                 Arrays.sort(sort);
 
@@ -596,7 +596,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Float[] sort(Float[] sort, boolean descendingOrder) {
+        public Float[] sort(Float[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
@@ -619,7 +619,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static double[] sort(double[] sort) {
+        public double[] sort(double[] sort) {
                 Arrays.sort(sort);
 
                 return sort;
@@ -637,7 +637,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static double[] sort(double[] sort, boolean descendingOrder) {
+        public double[] sort(double[] sort, boolean descendingOrder) {
                 Double[] objSort = ArrayUtils.toObject(sort);
 
                 if (descendingOrder) {
@@ -663,7 +663,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Double[] sort(Double[] sort) {
+        public Double[] sort(Double[] sort) {
 
                 Arrays.sort(sort);
 
@@ -682,7 +682,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Double[] sort(Double[] sort, boolean descendingOrder) {
+        public Double[] sort(Double[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
@@ -705,7 +705,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static boolean[] sort(boolean[] sort) {
+        public boolean[] sort(boolean[] sort) {
                 Boolean[] objSort = ArrayUtils.toObject(sort);
 
                 Arrays.sort(objSort);
@@ -727,7 +727,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static boolean[] sort(boolean[] sort, boolean descendingOrder) {
+        public boolean[] sort(boolean[] sort, boolean descendingOrder) {
                 Boolean[] objSort = ArrayUtils.toObject(sort);
 
                 if (descendingOrder) {
@@ -753,7 +753,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Boolean[] sort(Boolean[] sort) {
+        public Boolean[] sort(Boolean[] sort) {
 
                 Arrays.sort(sort);
 
@@ -772,7 +772,7 @@ public class Sorter {
          * 
          * @since 1.0.0
          */
-        public static Boolean[] sort(Boolean[] sort, boolean descendingOrder) {
+        public Boolean[] sort(Boolean[] sort, boolean descendingOrder) {
 
                 if (descendingOrder) {
                         Arrays.sort(sort, Collections.reverseOrder());
