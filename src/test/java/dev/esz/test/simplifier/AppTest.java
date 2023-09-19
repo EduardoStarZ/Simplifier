@@ -110,5 +110,10 @@ public class AppTest {
         System.out.println(myCrypt.decrypt(myCrypt.accessSecretKey(), encryptedMessage));
     }
 
+    @Test
+    public void testFolderCopyAll() {
+        Folder folder = new Folder("src\\test\\java\\folder");
+        folder.copyAll();
+    }
 
 }
