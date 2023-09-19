@@ -722,12 +722,12 @@ public class Files {
          * pathname to the new file.
          * </p>
          *
-         * @param pathnameToCopy The pathname that will set the directory to create the
+         * @param copyTo The pathname that will set the directory to create the
          *                       copied
          *                       file
          * @since 1.1.0
          */
-        public void copy(String pathnameToCopy) {
+        public void copy(String copyTo) {
                 File file = new File(pathname);
                 Scanner scanner;
                 try {
@@ -746,7 +746,7 @@ public class Files {
                         content.append(scanner.nextLine());
                         i++;
                 }
-                Files myFile = new Files(setPathname(pathnameToCopy));
+                Files myFile = new Files(setPathname(copyTo));
 
                 myFile.create();
 
