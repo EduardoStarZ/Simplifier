@@ -93,7 +93,7 @@ public class AppTest {
 
     @Test
     public void testCopy() {
-       Files file = new Files("src\\test\\java\\dev\\esz\\test\\simplifier\\hey");
+       Files file = new Files("hey");
        System.out.println(file.can()[0]);
 
        file.copy();

@@ -209,7 +209,6 @@ public class Files {
          * @since 1.0.0
          */
         public Files(String pathname) {
-
                 this.pathname = setPathname(pathname);
         }
 
@@ -285,7 +284,7 @@ public class Files {
 
                 File file = new File(pathname);
 
-                boolean fileCreated;
+                boolean fileCreated = false;
 
                 String[] name = pathname.split("\\\\");
                 int length = name.length - 1;
@@ -296,8 +295,8 @@ public class Files {
                         try {
                                 fileCreated = file.createNewFile();
                         } catch (Exception e) {
-                                throw new InputMismatchException(
-                                                "File could not be created, or the program lacks the permission to write to the selected folder");
+                                //throw new InputMismatchException(
+//                                                "File could not be created, or the program lacks the permission to write to the selected folder");
                         }
                 }
 
@@ -729,7 +728,7 @@ public class Files {
                 StringBuilder pathname = new StringBuilder();
 
                 for (int i = 0; i <= splitter.length - 2; i++) {
-                        pathname.append("\\\\").append(splitter[i]);
+                        pathname.append(splitter[i]).append("\\\\");
                 }
 
                 return pathname.toString();
@@ -789,6 +788,8 @@ public class Files {
                         i++;
                 }
                 Files myFile = new Files(getFirstAvailablePathnameDiscriminator());
+
+                System.out.println(myFile.pathname);
 
                 myFile.create();
 
