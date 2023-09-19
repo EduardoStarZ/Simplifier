@@ -560,7 +560,13 @@ public class Files {
         public void copy() {
                 Files file = new Files(pathname);
 
-                file.copy(getFilePathname());
+                file.copyFile(getFirstAvailablePathnameDiscriminator());
+        }
+
+        public void copy(String copyTo) {
+                Files file = new Files(pathname);
+
+                file.copyFile(copyTo);
         }
 
         /**
@@ -727,7 +733,7 @@ public class Files {
          *                       file
          * @since 1.1.0
          */
-        public void copy(String copyTo) {
+        private void copyFile(String copyTo) {
                 File file = new File(pathname);
                 Scanner scanner;
                 try {
