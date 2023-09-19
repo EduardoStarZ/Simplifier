@@ -536,46 +536,6 @@ public class Files {
 
         /**
          * <p>
-         * A method to copy the contents of a file into a new
-         * one that will be created by the method when declaring the
-         * pathname to the new file.
-         * </p>
-         *
-         * @param pathnameToCopy The pathname that will set the directory to create the
-         *                       copied
-         *                       file
-         * @since 1.0.0
-         */
-        public void copy(String pathnameToCopy) {
-                File file = new File(pathname);
-                Scanner scanner;
-                try {
-                        scanner = new Scanner(file);
-                } catch (IOException e) {
-                        throw new FileNotReadableException("The file " + getFileName() + " could not be read");
-                }
-
-                StringBuilder content = new StringBuilder();
-                int i = 0;
-
-                while (scanner.hasNextLine()) {
-                        if (i != 0) {
-                                content.append("\n");
-                        }
-                        content.append(scanner.nextLine());
-                        i++;
-                }
-                Files myFile = new Files(setPathname(pathnameToCopy));
-
-                myFile.create();
-
-                myFile.write(content.toString());
-
-                scanner.close();
-        }
-
-        /**
-         * <p>
          * A method that copies the file specified in the pathname class
          * and adds a number indicating that the copied file is a different
          * one from the original (similar to how some OS's do when a file is copied)
@@ -600,8 +560,7 @@ public class Files {
         public void copy() {
                 Files file = new Files(pathname);
 
-                        file.copyTo(getFilePathname());
-                
+                file.copy(getFilePathname());
         }
 
         /**
@@ -747,7 +706,7 @@ public class Files {
         private String getFirstAvailablePathnameDiscriminator() {
                 Files file = new Files(pathname);
 
-                for (int i = 1;; i++) {
+                for (int i = 1; ; i++) {
                         file = new Files(getFilePathname() + getFileName() + "(" + i + ")" + getFileExtension());
 
                         if (!file.exists()) {
@@ -766,9 +725,9 @@ public class Files {
          * @param pathnameToCopy The pathname that will set the directory to create the
          *                       copied
          *                       file
-         * @since 1.0.0
+         * @since 1.1.0
          */
-        private void copyTo(String pathnameToCopy) {
+        public void copy(String pathnameToCopy) {
                 File file = new File(pathname);
                 Scanner scanner;
                 try {
@@ -787,9 +746,7 @@ public class Files {
                         content.append(scanner.nextLine());
                         i++;
                 }
-                Files myFile = new Files(getFirstAvailablePathnameDiscriminator());
-
-                System.out.println(myFile.pathname);
+                Files myFile = new Files(setPathname(pathnameToCopy));
 
                 myFile.create();
 
