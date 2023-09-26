@@ -116,4 +116,11 @@ public class AppTest {
         folder.copyAll();
     }
 
+    @Test
+    public void testMathBinary() {
+        Binary test = new Binary(10);
+
+        test.print();
+    }
+
 }

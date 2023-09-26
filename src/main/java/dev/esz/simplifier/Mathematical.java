@@ -1,7 +1,9 @@
 package dev.esz.simplifier;
 
 /**
- * <p> A java class that contains different mathematical operations stored in subclasses
+ * <p>
+ * A java class that contains different mathematical operations stored in
+ * subclasses
  * </p>
  * 
  * @see dev.esz.simplifier.Mathematical
@@ -64,7 +66,8 @@ public class Mathematical {
         }
 
         /**
-         * <p>A static method that receives a number and calculates it's factorial.
+         * <p>
+         * A static method that receives a number and calculates it's factorial.
          * </p>
          *
          * @param number the number to have the factorial calculated.
@@ -82,19 +85,24 @@ public class Mathematical {
             return factorial;
         }
     }
+
     /**
-     * <p>A Java subclass to handle with Pythagorean Theorem values,
-     * such as cathetus and hypotenuse </p>
+     * <p>
+     * A Java subclass to handle with Pythagorean Theorem values,
+     * such as cathetus and hypotenuse
+     * </p>
      *
      * @author EduardoStarZ
      *
      * @since 1.0.0
-     * */
+     */
     public static class PyTheorem {
 
         /**
          *
-         * <p>A method that receives the values of both cathetus and returns the value of the hypotenuse
+         * <p>
+         * A method that receives the values of both cathetus and returns the value of
+         * the hypotenuse
          * </p>
          *
          * @param adjCat A double value for the adjacent cathetus
@@ -103,7 +111,7 @@ public class Mathematical {
          * @return A double value containing the hypotenuse
          *
          * @since 1.0.0
-         * */
+         */
         public static double getHip(double adjCat, double opoCat) {
             adjCat *= adjCat;
             opoCat *= opoCat;
@@ -113,7 +121,9 @@ public class Mathematical {
 
         /**
          *
-         * <p>A method that receives the values of both cathetus and returns the value of the hypotenuse
+         * <p>
+         * A method that receives the values of both cathetus and returns the value of
+         * the hypotenuse
          * </p>
          *
          * @param cat A double value for a cathetus
@@ -122,7 +132,7 @@ public class Mathematical {
          * @return A double value containing the second cathetus
          *
          * @since 1.0.0
-         * */
+         */
         public static double getCat(double cat, double hyp) {
             cat *= cat;
             hyp *= hyp;
@@ -130,6 +140,4 @@ public class Mathematical {
             return Math.sqrt(hyp - cat);
         }
     }
-
-
 }
