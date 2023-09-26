@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import dev.esz.simplifier.*;
+import static dev.esz.simplifier.Mathematical.Factorial.factore;
 
 import org.junit.Test;
 
@@ -88,7 +89,7 @@ public class AppTest {
 
     @Test
     public void testMathFactorial() {
-        System.out.println(Mathematical.Factorial.factore(5));
+        System.out.println(factore(5));
     }
 
     @Test
