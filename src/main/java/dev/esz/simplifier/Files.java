@@ -247,9 +247,8 @@ public class Files {
          *
          * @since 1.0.0
          */
-        public boolean rename(String newPathname) {
+        public void rename(String newPathname) {
                 File name = new File(pathname);
-                boolean isFileRenamed;
 
                 File newName = new File(newPathname);
 
@@ -257,13 +256,13 @@ public class Files {
                         if (newName.exists()) {
                                 throw new FileAlreadyExistsException("The file " + newName + "already exists");
                         } else {
-                                isFileRenamed = name.renameTo(newName);
+                                name.renameTo(newName);
                         }
                 } else {
                         throw new FileNotFoundException("Method rename() received a folder instead of a file");
                 }
 
-                return isFileRenamed;
+                return;
         }
 
         /**
@@ -280,11 +279,9 @@ public class Files {
          *
          * @since 1.0.0
          */
-        public boolean create() {
+        public void create() {
 
                 File file = new File(pathname);
-
-                boolean fileCreated = false;
 
                 String[] name = pathname.split("\\\\");
                 int length = name.length - 1;
@@ -293,14 +290,15 @@ public class Files {
                         throw new FileAlreadyExistsException("The file " + name[length] + " already exists");
                 } else {
                         try {
-                                fileCreated = file.createNewFile();
+                                file.createNewFile();
                         } catch (Exception e) {
-                                //throw new InputMismatchException(
-//                                                "File could not be created, or the program lacks the permission to write to the selected folder");
+                                // throw new InputMismatchException(
+                                // "File could not be created, or the program lacks the permission to write to
+                                // the selected folder");
                         }
                 }
 
-                return fileCreated;
+                return;
         }
 
         /**
@@ -418,7 +416,7 @@ public class Files {
          *
          * @since 1.0.0
          */
-        public boolean write(String input) {
+        public void write(String input) {
 
                 try {
                         File File = new File(pathname);
@@ -427,10 +425,10 @@ public class Files {
                         if (File.exists()) {
                                 myWriter.write(input);
                                 myWriter.close();
-                                return true;
+                                return;
                         }
                         myWriter.close();
-                        return false;
+                        return;
                 } catch (Exception e) {
                         throw new FileNotFoundException("The file " + getFileName() + " couldn't be found");
                 }
@@ -447,11 +445,12 @@ public class Files {
          * @param input A String that acts as the content to be concatenated
          *              to the file, after whatever is in the file
          * 
-         * @return A boolean that indicates if the append operation was successfully made.
+         * @return A boolean that indicates if the append operation was successfully
+         *         made.
          *
          * @since 1.0.0
          */
-        public boolean append(String input) {
+        public void append(String input) {
 
                 try {
                         File File = new File(pathname);
@@ -460,10 +459,10 @@ public class Files {
                         if (File.exists()) {
                                 myWriter.append(input);
                                 myWriter.close();
-                                return true;
+                                return;
                         }
                         myWriter.close();
-                        return false;
+                        return;
                 } catch (Exception e) {
                         throw new FileNotFoundException("The file " + getFileName() + " couldn't be found");
                 }
@@ -712,7 +711,7 @@ public class Files {
         private String getFirstAvailablePathnameDiscriminator() {
                 Files file = new Files(pathname);
 
-                for (int i = 1; ; i++) {
+                for (int i = 1;; i++) {
                         file = new Files(getFilePathname() + getFileName() + "(" + i + ")" + getFileExtension());
 
                         if (!file.exists()) {
@@ -729,8 +728,8 @@ public class Files {
          * </p>
          *
          * @param copyTo The pathname that will set the directory to create the
-         *                       copied
-         *                       file
+         *               copied
+         *               file
          * @since 1.1.0
          */
         private void copyFile(String copyTo) {

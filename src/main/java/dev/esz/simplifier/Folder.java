@@ -587,7 +587,7 @@ public class Folder {
          * 
          * @since 1.1.0
          */
-        private String getFirstAvailablePathnameDiscriminator(String pathname) {
+        public String getFirstAvailablePathnameDiscriminator(String pathname) {
                 Folder folder = new Folder(pathname);
 
                 for (int i = 1;; i++) {
@@ -599,7 +599,7 @@ public class Folder {
                 }
         }
 
-        private String getAllPathnameWithException(String pathname, int index) {
+        public String getAllPathnameWithException(String pathname, int index) {
                 String[] splitter = pathname.split("\\\\");
                 StringBuilder newPathname = new StringBuilder();
 
