@@ -73,15 +73,15 @@ public class AppTest {
 
     @Test
     public void testTimer() {
-        Timer timer = new Timer(0, 10);
+        Timer timer = new Timer();
         try {
-            /*
-             * System.out.println("Waiting 10 seconds");
-             * 
-             * timer.sleep();
-             * 
-             * System.out.println("10 seconds have passed");
-             */
+
+            // System.out.println("Waiting 10 seconds");
+
+            // timer.sleep();
+
+            // System.out.println("10 seconds have passed");
+
         } catch (Exception ignored) {
         }
     }
@@ -93,10 +93,10 @@ public class AppTest {
 
     @Test
     public void testCopy() {
-       Files file = new Files("hey");
-       System.out.println(file.can()[0]);
+        Files file = new Files("hey");
+        System.out.println(file.can()[0]);
 
-       file.copy();
+        file.copy();
     }
 
     @Test

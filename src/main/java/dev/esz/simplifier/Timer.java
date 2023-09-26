@@ -64,6 +64,18 @@ public class Timer {
 
     /**
      * <p>
+     * A constructor class that doesn't set the amount of time in the timer.
+     * </p>
+     * 
+     * @since 1.0.0
+     */
+    public Timer() {
+        setTime(0);
+        totalTime = this.milliseconds;
+    }
+
+    /**
+     * <p>
      * A constructor class that sets the amount of time the timer will wait.
      * </p>
      * 
@@ -140,7 +152,7 @@ public class Timer {
      * </p>
      * 
      * @param milliseconds A long that defines the amount of time in milliseconds
-     * @param seconds A long that defines the amount of time in seconds
+     * @param seconds      A long that defines the amount of time in seconds
      * 
      * @since 1.0.0
      */
@@ -158,8 +170,8 @@ public class Timer {
      * </p>
      * 
      * @param milliseconds A long that defines the amount of time in milliseconds
-     * @param seconds A long that defines the amount of time in seconds
-     * @param minutes A long that defines the amount of time in minutes
+     * @param seconds      A long that defines the amount of time in seconds
+     * @param minutes      A long that defines the amount of time in minutes
      * 
      * @since 1.0.0
      */
@@ -180,9 +192,9 @@ public class Timer {
      * </p>
      * 
      * @param milliseconds A long that defines the amount of time in milliseconds
-     * @param seconds A long that defines the amount of time in seconds
-     * @param minutes A long that defines the amount of time in minutes
-     * @param hours A long that defines the amount of time in hours
+     * @param seconds      A long that defines the amount of time in seconds
+     * @param minutes      A long that defines the amount of time in minutes
+     * @param hours        A long that defines the amount of time in hours
      * 
      * @since 1.0.0
      */
@@ -209,9 +221,9 @@ public class Timer {
      * </p>
      * 
      * @throws RuntimeException if the current thread is interrupted while
-     *                              waiting, in any means.
+     *                          waiting, in any means.
      */
-    public boolean sleep(){
+    public boolean sleep() {
         CountDownLatch timer = new CountDownLatch(1);
 
         boolean finished = false;
@@ -243,9 +255,9 @@ public class Timer {
      * 
      * @param count defines the amount of times the timer will run.
      * @throws RuntimeException if the current thread is interrupted while
-     *                              waiting, in any means.
+     *                          waiting, in any means.
      */
-    public boolean sleep(int count){
+    public boolean sleep(int count) {
 
         CountDownLatch timer = new CountDownLatch(count);
 
