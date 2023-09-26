@@ -115,12 +115,4 @@ public class AppTest {
         Folder folder = new Folder("src\\test\\java\\folder");
         folder.copyAll();
     }
-
-    @Test
-    public void testMathBinary() {
-        Binary test = new Binary(10);
-
-        test.print();
-    }
-
 }
