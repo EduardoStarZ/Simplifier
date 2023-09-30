@@ -270,9 +270,7 @@ public class Folder {
                 ArrayList<String> file = new ArrayList<>();
 
                 if (fileList == null) {
-                        FolderIsEmptyException e = new FolderIsEmptyException("The Folder does not contain any files");
-                        e.printStackTrace();
-                        throw e;
+                        throw new FolderIsEmptyException("The Folder does not contain any files");
                 }
 
                 for (int i = 0; i <= fileList.length - 1; i++) {
@@ -305,10 +303,8 @@ public class Folder {
                 ArrayList<String> folder = new ArrayList<>();
 
                 if (folderList == null) {
-                        FolderIsEmptyException e = new FolderIsEmptyException(
-                                        "The Folder does not contain any folders");
-                        e.printStackTrace();
-                        throw e;
+                        System.out.println(pathname);
+                        throw new FolderIsEmptyException("The Folder does not contain any folders");
                 }
 
                 for (int i = 0; i <= folderList.length - 1; i++) {
@@ -490,10 +486,7 @@ public class Folder {
                 StringBuilder newPathname = new StringBuilder();
 
                 if (!folder.isFolder() && pathname.length < 1) {
-                        FolderNotFoundException e = new FolderNotFoundException(
-                                        "The provided pathname did not pointed to a folder");
-                        e.printStackTrace();
-                        throw e;
+                        throw new FolderNotFoundException("The provided pathname did not pointed to a folder");
                 }
 
                 if (!folder.isFolder()) {
@@ -524,10 +517,7 @@ public class Folder {
                 String[] pathname = folder.pathname.split("\\\\");
 
                 if (!folder.isFolder() && pathname.length < 1) {
-                        FolderNotFoundException e = new FolderNotFoundException(
-                                        "The provided pathname did not pointed to a folder");
-                        e.printStackTrace();
-                        throw e;
+                        throw new FolderNotFoundException("The provided pathname did not pointed to a folder");
                 }
 
                 return pathname[0];
@@ -561,10 +551,7 @@ public class Folder {
                 StringBuilder newPathname = new StringBuilder();
 
                 if (!folder.isFolder() && pathname.length < 1) {
-                        FolderNotFoundException e = new FolderNotFoundException(
-                                        "The provided pathname did not pointed to a folder");
-                        e.printStackTrace();
-                        throw e;
+                       throw new FolderNotFoundException("The provided pathname did not pointed to a folder");
                 }
 
                 for (int i = 0; i <= index; i++) {
@@ -579,15 +566,12 @@ public class Folder {
          * only changing the most upper folder name with a discriminator.
          * </p>
          * 
-         * 
-         * @param pathname A String containing the pathname to be discriminated.
-         * 
          * @return A string containing the pathname with the most upper folder
          *         discriminated.
          * 
          * @since 1.1.0
          */
-        public String getFirstAvailablePathnameDiscriminator(String pathname) {
+        public String getFirstAvailablePathnameDiscriminator() {
                 Folder folder = new Folder(pathname);
 
                 for (int i = 1;; i++) {
@@ -599,7 +583,21 @@ public class Folder {
                 }
         }
 
-        public String getAllPathnameWithException(String pathname, int index) {
+        /**
+         * <p>A method responsible for getting all the pathname without
+         * the directory specified in the index parameter.</p>
+         *
+         * @param index An integer that indicates which directory should be skipped.
+         *
+         * @return A String containing the pathname to the specified folder without the
+         * indicated directory.
+         *
+         * @since 1.1.0
+         *
+         * @author EduardoStarZ
+         *
+         * */
+        public String getAllPathnameWithException(int index) {
                 String[] splitter = pathname.split("\\\\");
                 StringBuilder newPathname = new StringBuilder();
 
@@ -609,7 +607,7 @@ public class Folder {
 
                 for (int i = 0; i <= splitter.length - 1; i++) {
                         if (i != index) {
-                                newPathname.append("\\\\").append(splitter[i]);
+                                newPathname.append(splitter[i]).append("\\\\");
                         }
                 }
 
@@ -627,8 +625,7 @@ public class Folder {
         public String copy() {
                 Folder folder = new Folder(pathname);
 
-                Folder copyLocation = new Folder(
-                                getFirstAvailablePathnameDiscriminator(folder.getFirstFolderPathname()));
+                Folder copyLocation = new Folder(getFirstAvailablePathnameDiscriminator());
 
                 copyLocation.create();
 
@@ -651,8 +648,7 @@ public class Folder {
 
                 if (copyLocation.exists()) {
 
-                        copyLocation = new Folder(
-                                        getFirstAvailablePathnameDiscriminator(folder.getFirstFolderPathname()));
+                        copyLocation = new Folder(getFirstAvailablePathnameDiscriminator());
 
                         copyLocation.create();
                         return;
@@ -665,7 +661,7 @@ public class Folder {
                 Folder folder = new Folder(pathname);
 
                 String location = folder.copy();
-                replicate(pathname, location);
+                replicate(pathname, location + getAllPathnameWithException(0));
         }
 
         private void replicate(String pathname, String location) {
@@ -693,5 +689,4 @@ public class Folder {
                         file.copy(location);
                 }
         }
-
 }

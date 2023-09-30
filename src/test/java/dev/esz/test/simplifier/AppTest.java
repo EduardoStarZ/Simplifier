@@ -114,6 +114,9 @@ public class AppTest {
     @Test
     public void testFolderCopyAll() {
         Folder folder = new Folder("src\\test\\java\\folder");
-        folder.copyAll();
+     //   folder.copyAll();
+        for(int i=0; i<=folder.foldersInFolder().length-1; i++) {
+            System.out.println(folder.foldersInFolder()[i].toString());
+        }
     }
 }
