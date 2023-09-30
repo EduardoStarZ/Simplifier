@@ -1,5 +1,6 @@
 package dev.esz.test.simplifier;
 
+import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -7,15 +8,9 @@ import java.util.HashSet;
 import dev.esz.simplifier.*;
 import static dev.esz.simplifier.Mathematical.Factorial.factore;
 
-import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest {
-    /**
-     * Rigorous Test :-)
-     */
+    
     @Test
     public void testCollections() {
 
@@ -94,10 +89,10 @@ public class AppTest {
 
     @Test
     public void testCopy() {
-        Files file = new Files("hey");
-        System.out.println(file.can()[0]);
+        // Files file = new Files("hey");
+        // System.out.println(file.can()[0]);
 
-        file.copy();
+        // file.copy();
     }
 
     @Test

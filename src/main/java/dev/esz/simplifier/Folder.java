@@ -303,7 +303,6 @@ public class Folder {
                 ArrayList<String> folder = new ArrayList<>();
 
                 if (folderList == null) {
-                        System.out.println(pathname);
                         throw new FolderIsEmptyException("The Folder does not contain any folders");
                 }
 
