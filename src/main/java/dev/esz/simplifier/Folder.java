@@ -619,8 +619,12 @@ public class Folder {
          * A method that copies the folder, and adds a discriminator to it, and copies
          * the other folders in the pathname normally.
          * </p>
+         *
+         * @return A String containing the target location of the copy operation.
          * 
          * @since 1.1.0
+         *
+         * @author EduardoStarZ
          */
         public String copy() {
                 Folder folder = new Folder(pathname);
@@ -637,8 +641,13 @@ public class Folder {
          * A method that copies the folder, and adds a discriminator to it, and copies
          * the other folders in the pathname normally.
          * </p>
+         *
+         * @param location a String containing the pathname location to where the folder will be copied to.
          * 
          * @since 1.1.0
+         *
+         * @author EduardoStarZ
+         *
          */
         public void copy(String location) {
                 Folder folder = new Folder(pathname);
@@ -657,36 +666,39 @@ public class Folder {
                 copyLocation.create();
         }
 
-        public void copyAll() {
-                Folder folder = new Folder(pathname);
+        // ignore code below, this is a raw prototype
+        // for mass copy of an entire folders contents
 
-                String location = folder.copy();
-                replicate(pathname, location + getAllPathnameWithException(0));
-        }
+        // public void copyAll() {
+        //         Folder folder = new Folder(pathname);
 
-        private void replicate(String pathname, String location) {
-                Folder folder = new Folder(pathname);
-                Object[] Folders = folder.foldersInFolder();
+        //         String location = folder.copy();
+        //         replicate(pathname, location + getAllPathnameWithException(0));
+        // }
 
-                for (int i = 0; i <= Folders.length - 1; i++) {
-                        Folder folderCopy = new Folder(Folders[i].toString());
-                        folderCopy.copy(location);
+        // private void replicate(String pathname, String location) {
+        //         Folder folder = new Folder(pathname);
+        //         Object[] Folders = folder.foldersInFolder();
 
-                        replicateFiles(location);
+        //         for (int i = 0; i <= Folders.length - 1; i++) {
+        //                 Folder folderCopy = new Folder(Folders[i].toString());
+        //                 folderCopy.copy(location);
 
-                        replicate(Folders[i].toString(), location);
-                }
+        //                 replicateFiles(location);
 
-        }
+        //                 replicate(Folders[i].toString(), location);
+        //         }
 
-        private void replicateFiles(String location) {
-                Folder folder = new Folder(pathname);
-                Object[] files = folder.filesInFolder();
+        // }
 
-                for (int i = 0; i <= files.length - 1; i++) {
-                        Files file = new Files(files[i].toString());
+        // private void replicateFiles(String location) {
+        //         Folder folder = new Folder(pathname);
+        //         Object[] files = folder.filesInFolder();
 
-                        file.copy(location);
-                }
-        }
+        //         for (int i = 0; i <= files.length - 1; i++) {
+        //                 Files file = new Files(files[i].toString());
+
+        //                 file.copy(location);
+        //         }
+        // }
 }
